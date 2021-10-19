@@ -2,6 +2,25 @@
 class ModelLocations extends Connection
 {
     /** 
+     * Cette fonction Permet d'enregistrer 
+     * un Locations de la table Locations
+     */
+    protected function enregistrerLocations($id, $idLocataire, $imm, $dateDebut, $dateFin)
+    {
+        $sql = "INSERT INTO locations VALUES(NULL, ?, ?, ?, ?)";
+        $stm = $this->getConnection()->prepare($sql);
+        $stm->execute(
+            [
+                $id,
+                $idLocataire,
+                $imm,
+                $dateDebut,
+                $dateFin
+            ]
+        );
+    }
+
+    /** 
      * Cette fonction Permet de recuperer toutes 
      * les Locations de la table Locations
      */

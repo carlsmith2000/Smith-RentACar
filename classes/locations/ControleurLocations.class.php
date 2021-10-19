@@ -1,5 +1,10 @@
 <?php
 class ControleurLocations extends ModelLocations{
+
+    public function enregistrerLocations($id, $idLocataire, $imm, $dateDebut, $dateFin){
+        $this->enregistrerLocations($id, $idLocataire, $imm, $dateDebut, $dateFin);
+    }
+
     public function deleteLocationrById($id){
         $this->deleteLocationsById($id);
     }
