@@ -5,13 +5,13 @@ class ModelUtilisateurs extends Connection
      * Cette fonction Permet d'enregistrer 
      * des utilisateurs dans la table utilisateurs
      */
-    protected function enregistrerUtilisateurs($pseudo, $message){
+    protected function enregistrerUtilisateurs($pseudo, $password){
         $sql = "INSERT INTO utilisateurs VALUES (null, ?, ?)";
         $stm = $this->getConnection()->prepare($sql);
         $stm->execute(
             [
                 $pseudo, 
-                $message
+                $password
             ]
         );
         }
@@ -33,13 +33,13 @@ class ModelUtilisateurs extends Connection
      * derniers des Utilisateurs
      */
 
-    protected function getLastTenMessage()
-    {
-        $sql = "SELECT messages FROM utilisateurs";
-        $stm = $this->getConnection()->prepare($sql);
-        $stm->execute();
-        return $stm->fetchAll();
-    }
+    // protected function getLastUtilisateurMessages()
+    // {
+    //     $sql = "SELECT id_messagess FROM utilisateurs";
+    //     $stm = $this->getConnection()->prepare($sql);
+    //     $stm->execute();
+    //     return $stm->fetchAll();
+    // }
 
     /** 
      * Cette fonction Permet de rechercher et recuperer un utilisateurs  
@@ -66,7 +66,7 @@ class ModelUtilisateurs extends Connection
      * Cette fonction Permet de Modifier un utilisateurs  
      */
 
-    protected function updateUtilisateursById($idUser, $pseudo,   $message)
+    protected function updateUtilisateursById($idUser, $pseudo, $password)
     {
         $sql = "UPDATE utilisateurs SET
             pseudo = ?, 
@@ -76,6 +76,7 @@ class ModelUtilisateurs extends Connection
         $stm->execute(
             [
                 $pseudo, 
+                $password,
                 $idUser
             ]
         );
