@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2021 at 01:55 PM
+-- Generation Time: Oct 20, 2021 at 01:40 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -22,9 +22,7 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
--- CREATION DATA BASE
-CREATE database smithrentacar;
-USE smithrentacar;
+
 --
 -- Table structure for table `clients`
 --
@@ -66,6 +64,36 @@ CREATE TABLE `locations` (
   `dateFin` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `locations`
+--
+
+INSERT INTO `locations` (`id`, `id_client`, `id_voiture`, `dateDebut`, `dateFin`) VALUES
+(1, 1, 3, '2021-09-10 13:25:36', '2021-10-10 14:16:16'),
+(2, 5, 1, '2021-10-19 14:22:37', '2021-11-24 06:16:00'),
+(5, 7, 4, '2021-09-05 10:16:00', '2021-10-10 07:14:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message`
+--
+
+CREATE TABLE `message` (
+  `id` int(11) NOT NULL,
+  `id_utilisateurs` int(11) NOT NULL,
+  `message` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`id`, `id_utilisateurs`, `message`) VALUES
+(2, 4, 'Bonjour Tout le monde, mespere nou byen, svp eske nou panse ap gen kou demn si Dieu veut po janm tande lari a ye la son bagay grave wi'),
+(4, 9, 'Monsieur Andy di depi gen pasaj la la wi li men m'),
+(5, 8, 'ebyen mespere gen pasaj man epi m bezwen jere yon bagay nan projelan');
+
 -- --------------------------------------------------------
 
 --
@@ -75,8 +103,18 @@ CREATE TABLE `locations` (
 CREATE TABLE `utilisateurs` (
   `id_utilisateur` int(11) NOT NULL,
   `pseudo` varchar(255) NOT NULL,
-  `message` text NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `utilisateurs`
+--
+
+INSERT INTO `utilisateurs` (`id_utilisateur`, `pseudo`, `password`) VALUES
+(4, 'Smith', 'smith123'),
+(5, 'Djeby', 'j1235'),
+(8, 'Wenchy', 'wpc1234'),
+(9, 'Tyson', 'ty2020');
 
 -- --------------------------------------------------------
 
@@ -130,6 +168,13 @@ ALTER TABLE `locations`
   ADD KEY `fk_voiture` (`id_voiture`);
 
 --
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_id_utilisateurs` (`id_utilisateurs`);
+
+--
 -- Indexes for table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
@@ -155,13 +200,19 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `voitures`
@@ -179,6 +230,12 @@ ALTER TABLE `voitures`
 ALTER TABLE `locations`
   ADD CONSTRAINT `fk_client` FOREIGN KEY (`id_client`) REFERENCES `clients` (`id_client`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_voiture` FOREIGN KEY (`id_voiture`) REFERENCES `voitures` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `message`
+--
+ALTER TABLE `message`
+  ADD CONSTRAINT `fk_id_utilisateurs` FOREIGN KEY (`id_utilisateurs`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
