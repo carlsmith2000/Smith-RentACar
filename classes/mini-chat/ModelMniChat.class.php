@@ -11,16 +11,29 @@ class ModelMiniChat extends Connection
         $stm->execute([$id_utilisateur, $messages]);
     }
 
-    
+
     /**
-     * Cette Fonction Permet De recuperer tout les messages;
+     * Cette Fonction Permet De recuperer tout les messages et le personne qui l'ont envoyés;
      */
-    protected function getAlleMessage($id_utilisateur, $messages)
+    protected function getAlleMessage()
     {
-        $sql = "SELECT * FROM message";
+        $sql = "SELECT * 
+        FROM `utilisateurs` 
+        INNER JOIN `message` 
+        ON `utilisateurs`.`id_utilisateur` = `message`.`id_utilisateurs`;";
+
         $stm = $this->getConnection()->prepare($sql);
         $stm->execute([]);
         return $stm->fetchAll();
     }
+
+    /**
+     * Cette Fonction Permet De supprimer tout un messages ;
+     */
+    protected function deleteMessage($id)
+    {
+        $sql = " DELETE message FROM message WHERE id = ? ";
+        $stm = $this->getConnection()->prepare($sql);
+        $stm->execute([$id]);
+    }
 }
-?>
