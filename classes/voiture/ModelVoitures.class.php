@@ -40,7 +40,7 @@ class ModelVoitures extends Connection
     }
 
     /** 
-     * Cette fonction Permet de rechercher et recuperer une Voitures  
+     * Cette fonction Permet de rechercher et recuperer une Voitures a l'aide de son id
      */
     protected function researchVoituresById($id)
     {
@@ -49,6 +49,32 @@ class ModelVoitures extends Connection
         $stm->execute([$id]);
         return COUNT($stm->fetchAll()) > 0;
     }
+
+    /** 
+     * Cette fonction Permet de rechercher et recuperer les Voitures
+     * de meme marque.
+     */
+    protected function researchVoituresByMarque($marque)
+    {
+        $sql = "SELECT * FROM voitures WHERE marque = ? ";
+        $stm = $this->getConnection()->prepare($sql);
+        $stm->execute([$marque]);
+        return COUNT($stm->fetchAll()) > 0;
+    }
+
+     /** 
+     * Cette fonction Permet de rechercher et recuperer les Voitures
+     * de meme Model.
+     */
+    protected function researchVoituresByModel($model)
+    {
+        $sql = "SELECT * FROM voitures WHERE model = ? ";
+        $stm = $this->getConnection()->prepare($sql);
+        $stm->execute([$model]);
+        return COUNT($stm->fetchAll()) > 0;
+    }
+
+
 
     /** 
      * Cette fonction Permet de supprimer une Voitures  

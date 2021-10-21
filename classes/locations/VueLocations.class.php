@@ -1,12 +1,13 @@
 <?php
-    class VueLocations extends ModelLocations{
-
-        public function getAllUtilisateur(){
-            return $this->getAllUtilisateur();
-        }
-
-        public function researchUtilisateurById($id){
-            return $this->researchLocationsById($id);
-        }
+class VueLocations extends ModelLocations
+{
+    public function getAllLocation()
+    {
+        return $this->getAllLocations();
     }
-?>
+
+    public function researchLocationById($id)
+    {
+        return $this->researchLocationsById($id);
+    }
+}
