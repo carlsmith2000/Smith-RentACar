@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2021 at 01:40 PM
+-- Generation Time: Oct 21, 2021 at 01:56 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -35,14 +35,14 @@ CREATE TABLE `clients` (
   `dateExpirationPermis` date NOT NULL,
   `numero` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
-  `pays` varchar(255) NOT NULL
+  `adresse` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `clients`
 --
 
-INSERT INTO `clients` (`id_client`, `nomComplet`, `age`, `cin`, `dateExpirationPermis`, `numero`, `mail`, `pays`) VALUES
+INSERT INTO `clients` (`id_client`, `nomComplet`, `age`, `cin`, `dateExpirationPermis`, `numero`, `mail`, `adresse`) VALUES
 (1, 'Carl Smith ETIENNE', 21, 1037826620, '2021-10-13', '36787853', 'carlsmithetienne2000@gmail.com', 'Haiti'),
 (5, 'Sainnamise Desire', 40, 1035526620, '2019-02-22', '36500075', 'sainnamisedesire1985@gmail.com', 'USA'),
 (6, 'Sainnamise Desire', 40, 1035526620, '2021-10-20', '36500075', 'sainnamisedesire1985@gmail.com', 'USA'),
@@ -60,18 +60,22 @@ CREATE TABLE `locations` (
   `id` int(11) NOT NULL,
   `id_client` int(11) NOT NULL,
   `id_voiture` int(11) NOT NULL,
-  `dateDebut` datetime NOT NULL,
-  `dateFin` datetime NOT NULL
+  `dateDebut` date NOT NULL,
+  `dateFin` date NOT NULL,
+  `heureDebut` time NOT NULL,
+  `heureFin` time NOT NULL,
+  `pays` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `locations`
 --
 
-INSERT INTO `locations` (`id`, `id_client`, `id_voiture`, `dateDebut`, `dateFin`) VALUES
-(1, 1, 3, '2021-09-10 13:25:36', '2021-10-10 14:16:16'),
-(2, 5, 1, '2021-10-19 14:22:37', '2021-11-24 06:16:00'),
-(5, 7, 4, '2021-09-05 10:16:00', '2021-10-10 07:14:00');
+INSERT INTO `locations` (`id`, `id_client`, `id_voiture`, `dateDebut`, `dateFin`, `heureDebut`, `heureFin`, `pays`) VALUES
+(1, 1, 3, '2021-09-10', '2021-10-10', '16:00:00', '16:00:00', ''),
+(2, 5, 1, '2021-10-19', '2021-11-24', '12:00:00', '12:00:00', ''),
+(5, 7, 4, '2021-09-05', '2021-10-10', '09:00:00', '18:00:00', ''),
+(7, 1, 2, '2021-10-14', '2021-10-05', '04:10:00', '04:15:00', 'Azerbaidjan');
 
 -- --------------------------------------------------------
 
@@ -200,7 +204,7 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `message`

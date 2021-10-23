@@ -32,6 +32,10 @@
                         <label for="age">Entrer Votre Age</label>
                         <input class="input" type="text" name="telephone" placeholder="Entrer Votre Age" min = 18 max = 75 required>
                     </div>
+<<<<<<< Updated upstream
+=======
+                    
+>>>>>>> Stashed changes
                 </div>
 
                 <div class="txt_input">
@@ -62,7 +66,10 @@
                         <input class="input" type="text" name="telephone" placeholder="Entre Le no telephone du Client" required>
                     </div>
                 </div>
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
             </div>
 
             <div class="btns">
