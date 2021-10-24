@@ -12,4 +12,8 @@ class ControleurUtilisateurs extends ModelUtilisateurs{
     public function updateUtilisateurById($idUser, $pseudo,    $message){
         $this->updateUtilisateursById($idUser, $pseudo, $message);
     }
+
+    public function updateStatuts($idUser, $statut){
+        return $this->updateStatut($idUser, $statut);
+    }
 }

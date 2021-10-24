@@ -1,15 +1,46 @@
+<?php
+    include('../autoLoad/autoLoader.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <title>Smith | Login</title>
 </head>
+
 <body>
-<div class="centerC">
+    <?php
+    $controleurClients = new ControleurClients();
+
+    if (isset($_POST['valider'])) {
+        $nomComplet = $_POST['nom'];
+        $age = $_POST['age'];
+        $cin = $_POST['cin'];
+        $dateExpirationPermis = $_POST['expPermis'];
+        $numero = $_POST['telephone'];
+        $mail = $_POST['mail'];
+        $adresse = $_POST['adresse'];
+        $codeConnexion = rand(99999, 99999999);
+
+        $controleurClients->enregistrerClient(
+            $nomComplet,
+            $age,
+            $cin,
+            $dateExpirationPermis,
+            $numero,
+            $mail,
+            $adresse,
+            $codeConnexion
+        );
+    }
+    ?>
+    <div class="centerC">
         <h1>CREATION COMPTE CLIENT</h1>
-        <form action="" method="POST" class="formAjoutC">
+        <form action="../pages/creationCompteClient.php" method="POST" class="formAjoutC">
 
             <div class="block_1">
 
@@ -30,9 +61,9 @@
                 <div class="txt_input">
                     <div>
                         <label for="age">Entrer Votre Age</label>
-                        <input class="input" type="text" name="telephone" placeholder="Entrer Votre Age" min = 18 max = 75 required>
+                        <input class="input" type="text" name="age" placeholder="Entrer Votre Age" min=18 max=75 required>
                     </div>
-                    
+
                 </div>
 
                 <div class="txt_input">
@@ -44,7 +75,7 @@
 
                 <div class="txt_input">
                     <div>
-                        <label for="age">Entrer la date d'expiration de votre Permis de Conduit</label>
+                        <label for="age"> la date d'expiration  Permis</label>
                         <input class="input" type="date" name="expPermis" placeholder="date exp Permis" required>
                     </div>
                 </div>
@@ -75,4 +106,5 @@
         </form>
     </div>
 </body>
+
 </html>

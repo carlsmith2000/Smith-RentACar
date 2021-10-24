@@ -2,7 +2,7 @@
     class VueUtilisateurs extends ModelUtilisateurs{
 
         public function getAllUtilisateur(){
-            return $this->getAllUtilisateur();
+            return $this->getAllUtilisateurs();
         }
 
         public function researchUtilisateurById($id){

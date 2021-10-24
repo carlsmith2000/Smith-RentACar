@@ -6,20 +6,20 @@ class ModelClients extends Connection
      * Cette fonction Permet de recuperer toutes 
      * les voitures de la table clients
      */
-    protected function enregistrerClients($id, $nomComplet, $age, $cin, $dateExpirationPermis, $numero, $mail, $pays)
+    protected function enregistrerClients($nomComplet, $age, $cin, $dateExpirationPermis, $numero, $mail, $adresse, $codeConnexion)
     {
-        $sql = "INSERT INTO clients VALUES(null, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO clients VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stm = $this->getConnection()->prepare($sql);
         $stm->execute(
             [
-                $id,
                 $nomComplet,
                 $age, 
                 $cin,
                 $dateExpirationPermis,
                 $numero,
                 $mail,
-                $pays,
+                $adresse,
+                $codeConnexion
             ]
         );
     }
@@ -60,7 +60,7 @@ class ModelClients extends Connection
     /** 
      * Cette fonction Permet de Modifier un Locataire  
      */
-    protected function updateTenetsById($id, $nomComplet, $age, $cin, $dateExpirationPermis, $numero, $mail, $pays)
+    protected function updateTenetsById($id, $nomComplet, $age, $cin, $dateExpirationPermis, $numero, $mail, $adresse)
     {
         $sql = "UPDATE clients SET
             nomComplet = ?, 
@@ -75,11 +75,12 @@ class ModelClients extends Connection
         $stm->execute(
             [
                 $nomComplet,
-                $age, $cin,
+                $age,
+                $cin,
                 $dateExpirationPermis,
                 $numero,
                 $mail,
-                $pays,
+                $adresse,
                 $id
             ]
         );

@@ -12,7 +12,8 @@
         'db/',
         'clients/',
         'locations/',
-        'utilisateur/',
+        'mini-chat/',
+        'utilisateurs/',
         'voiture/',
     ];
 

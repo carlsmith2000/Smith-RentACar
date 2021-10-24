@@ -2,9 +2,9 @@
 class ControleurClients extends ModelClients
 {
 
-    public  function enregistrerClient($id, $nomComplet, $age, $cin, $dateExpirationPermis, $numero, $mail, $pays)
+    public  function enregistrerClient($nomComplet, $age, $cin, $dateExpirationPermis, $numero, $mail, $adresse, $codeConnexion)
     {
-        $this->enregistrerClients($id, $nomComplet, $age, $cin, $dateExpirationPermis, $numero, $mail, $pays);
+        $this->enregistrerClients($nomComplet, $age, $cin, $dateExpirationPermis, $numero, $mail, $adresse, $codeConnexion);
     }
 
     public function deleteTenetById($id)
@@ -12,8 +12,8 @@ class ControleurClients extends ModelClients
         $this->deleteTenetsById($id);
     }
 
-    public function updateTenetById($id, $nomComplet, $age, $cin, $dateExpirationPermis, $numero, $mail, $pays)
+    public function updateTenetById($id, $nomComplet, $age, $cin, $dateExpirationPermis, $numero, $mail, $adresse, $codeConnexion)
     {
-        $this->updateTenetById($id, $nomComplet, $age, $cin, $dateExpirationPermis, $numero, $mail, $pays);
+        $this->updateTenetById($id, $nomComplet, $age, $cin, $dateExpirationPermis, $numero, $mail, $adresse, $codeConnexion);
     }
 }

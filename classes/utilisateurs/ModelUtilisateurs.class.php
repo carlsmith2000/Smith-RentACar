@@ -18,11 +18,11 @@ class ModelUtilisateurs extends Connection
 
     /** 
      * Cette fonction Permet de recuperer toutes 
-     * les Utilisateurs de la table Utilisareur
+     * les Utilisateurs en ligne de la table Utilisareur
      */
     protected function getAllUtilisateurs()
     {
-        $sql = "SELECT * FROM utilisateurs";
+        $sql = "SELECT id_utilisateur, pseudo, statut FROM utilisateurs";
         $stm = $this->getConnection()->prepare($sql);
         $stm->execute();
         return $stm->fetchAll();
@@ -49,7 +49,7 @@ class ModelUtilisateurs extends Connection
         $sql = "SELECT * FROM utilisateurs WHERE id = ? ";
         $stm = $this->getConnection()->prepare($sql);
         $stm->execute([$id]);
-        return COUNT($stm->fetchAll()) > 0;
+        return $stm->fetchAll();
     }
 
     /** 
@@ -80,5 +80,19 @@ class ModelUtilisateurs extends Connection
                 $idUser
             ]
         );
+    }
+
+    protected function updateStatut($idUser, $statut){
+        $sql = "UPDATE utilisateurs SET
+            statut = ? 
+        WHERE id_utilisateur = ? ";
+        $stm = $this->getConnection()->prepare($sql);
+        $stm->execute(
+            [
+                $statut, 
+                $idUser
+            ]
+        );
+        return $stm->rowCount();
     }
 }
