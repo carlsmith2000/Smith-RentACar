@@ -6,15 +6,15 @@ class ModelUtilisateurs extends Connection
      * des utilisateurs dans la table utilisateurs
      */
     protected function enregistrerUtilisateurs($pseudo, $password){
-        $sql = "INSERT INTO utilisateurs VALUES (null, ?, ?)";
+        $sql = "INSERT INTO utilisateurs(pseudo, password) VALUES (?, ?)";
         $stm = $this->getConnection()->prepare($sql);
-        $stm->execute(
+        return $stm->execute(
             [
                 $pseudo, 
                 $password
             ]
         );
-        }
+    }
 
     /** 
      * Cette fonction Permet de recuperer toutes 

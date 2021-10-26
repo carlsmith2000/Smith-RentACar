@@ -1,8 +1,8 @@
 <?php
 class ControleurUtilisateurs extends ModelUtilisateurs{
     
-    public function enregistrerUtilisateur($idUser, $pseudo, $message){
-        $this->enregistrerUtilisateurs($idUser, $pseudo, $message);
+    public function enregistrerUtilisateur($pseudo, $message){
+        $this->enregistrerUtilisateurs($pseudo, $message);
     }
 
     public function deleteUtilisateurById($id){

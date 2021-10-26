@@ -33,10 +33,13 @@ $testOnline = $controleurUtilisateur->updateStatuts($_SESSION['utilisateurs']->i
 <?php
 if (isset($_POST['send'])) {
     $id_utilisateur = $_SESSION['utilisateurs']->id_utilisateur;
-    $message = $_POST['message'];
-    $dateDenvoi = $dt->format("Y-m-d");
-    $heureDenvoi = $dt->format("h:i:s");
-    $controleurChat->envoyerMessages($id_utilisateur,  $message,  $dateDenvoi, $heureDenvoi);
+    $message = htmlspecialchars(stripslashes($_POST['message']));
+
+    if(!empty($message)){
+        $dateDenvoi = $dt->format("Y-m-d");
+        $heureDenvoi = $dt->format("h:i:s");
+        $controleurChat->envoyerMessages($id_utilisateur,  $message,  $dateDenvoi, $heureDenvoi);
+    }
 }
 
 if (isset($_POST['logout'])) {
@@ -60,45 +63,62 @@ if (isset($_POST['logout'])) {
     </div>
 
     <div class="chat">
+
         <div class="utilisateur">
             <?php
             foreach ($users as $user) {
-                if ($user->statut == 1) {
+                if ($user->id_utilisateur != $_SESSION['utilisateurs']->id_utilisateur) {
+                    if ($user->statut == 1) {
             ?>
-                    <p class="user"><strong class="strong"><?= $user->pseudo[0] ?></strong> <?= $user->pseudo ?><small id="sl">w</small></p>
-                <?php
-                } else {
-                ?>
-                    <p class="user"><strong class="strong"><?= $user->pseudo[0] ?></strong> <?= $user->pseudo ?><small></small></p>
+                        <div class="user-online">
+                            <p class="user"><strong class="strong"><?= $user->pseudo[0] ?></strong> <?= $user->pseudo ?></p>
+                            <small class="enLigne">En ligne</small>
+                            <div id="online"></div>
+                        </div>
+                    <?php
+                    } else {
+                    ?>
+                        <div class="user-online">
+                            <p class="user"><strong class="strong"><?= $user->pseudo[0] ?></strong> <?= $user->pseudo ?></p>
+                            <small class="enLigne">Hors ligne</small>
+                            <div id="Horsligne"></div>
+                        </div>
             <?php
+                    }
                 }
             }
             ?>
+        </div>
+        <div class="globalmessage">
+            <div class="message">
+                <?php
+                $allMessages = $vueChat->alleMessage();
+                foreach ($allMessages as $message) {
+                    if ($message->id_utilisateurs == $_SESSION['utilisateurs']->id_utilisateur) {
+                ?>
+                        <!-- <div class="distincMessage"> -->
+                        <p class="curent"><?= $message->message ?> <small id="time"><?= $message->heureDenvoi ?></small></p>
+                    <?php
+                    } else {
+                    ?>
+                        <p class="auther"><?= $message->message ?><br><small id="time"><?= $message->heureDenvoi ?></small></p>
+                        <!-- </div> -->
+
+                <?php
+                    }
+                }
+                ?>
+
+            </div>
         </div>
 
-        <div class="message">
-            <?php
-            $allMessages = $vueChat->alleMessage();
-            foreach ($allMessages as $message) {
-                if ($message->id_utilisateurs == $_SESSION['utilisateurs']->id_utilisateur) {
-                ?>
-                    <div class="distincMessage">
-                        <p class="curent"><?= $message->message ?> <small><?= $message->heureDenvoi ?></small></p><br>
-                    <?php
-                } else {
-                    ?>
-                        <p class="auther"><?= $message->message ?> <small><?= $message->heureDenvoi ?></small></p><br>
-                    </div>
-            <?php
-                }
-            }
-            ?>
-        </div>
+
 
         <div class="inputMessage">
             <form action="./chat.php" method="POST">
-                <input class="msg" type="text" name="message" placeholder="Message">
-                <input class="btnSend" type="submit" value="Envoyer" name="send">
+            <textarea class="msg" type="ar" name="message" placeholder="Message" id="" cols="30" rows="20"></textarea>
+                <!-- <input class="msg" type="ar" name="message" placeholder="Message"> -->
+                <input class="btnSend" type="submit" value="Envoyer&rarr;" name="send">
             </form>
         </div>
 

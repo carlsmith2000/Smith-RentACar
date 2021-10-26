@@ -6,7 +6,7 @@ $allUtilisateur = $vueUtilisateur->getAllUtilisateur();
 $vueChat = new VueMiniChat();
 
 if (isset($_POST['connect'])) {
-    $response = $vueChat->canConnectUser($_POST['users'], $_POST['password']);
+    $response = $vueChat->canConnectUser(strtoupper($_POST['users']), $_POST['password']);
     if ($response->userFind) {
         session_start();
         $_SESSION['utilisateurs'] = $response->utilisateur;
@@ -60,7 +60,7 @@ if (isset($_POST['connect'])) {
                 ?>
 
                 <div class="link_create_account">
-                    <a class="link_create" href="#">creer un Compte &rarr;</a>
+                    <a class="link_create" href="./compteUtilisateur.php">creer un Compte &rarr;</a>
                 </div>
             </form>
         </div>
