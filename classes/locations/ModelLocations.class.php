@@ -5,14 +5,14 @@ class ModelLocations extends Connection
      * Cette fonction Permet d'enregistrer 
      * un Locations de la table Locations
      */
-    protected function enregistrerLocations($idLocataire, $imm, $dateDebut,  $heureDebut, $dateFin, $heureFin, $pays)
+    protected function enregistrerLocations($idLocataire, $idVoiture, $dateDebut,  $heureDebut, $dateFin, $heureFin, $pays)
     {
         $sql = "INSERT INTO locations(id_client, id_voiture, dateDebut,  heureDebut, dateFin, heureFin, pays) VALUES(?, ?, ?, ?, ?, ?, ?)";
         $stm = $this->getConnection()->prepare($sql);
         $stm->execute(
             [
                 $idLocataire,
-                $imm,
+                $idVoiture,
                 $dateDebut,
                 $heureDebut,
                 $dateFin,
@@ -59,11 +59,11 @@ class ModelLocations extends Connection
      * Cette fonction Permet de Modifier un utilisateurs  
      */
 
-    protected function updateLocationsById($id, $idLocataire, $imm, $dateDebut, $dateFin)
+    protected function updateLocationsById($id, $idLocataire, $idVoiture, $dateDebut, $dateFin)
     {
         $sql = "UPDATE utilisateurs SET
             idLocataire = ?, 
-            imm = ?,
+            idVoiture = ?,
             dateDebut = ?,
             dateFin = ?
         WHERE id = ? ";
@@ -71,7 +71,7 @@ class ModelLocations extends Connection
         $stm->execute(
             [
                 $idLocataire,
-                $imm,
+                $idVoiture,
                 $dateDebut,
                 $dateFin,
                 $id
