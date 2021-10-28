@@ -12,7 +12,7 @@ $allUsers =  $vueUtilisateur->getAllUtilisateur();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <title>Document</title>
+    <title>Create Acount</title>
 </head>
 
 <body>
@@ -32,7 +32,7 @@ $allUsers =  $vueUtilisateur->getAllUtilisateur();
 
         if (!$error) {
             if ($response = $controleurUtilisateur->enregistrerUtilisateur(
-                strtoupper($_POST['users']),
+                $_POST['users'],
                 $_POST['password']
             ) === 0) {
                 $error = true;

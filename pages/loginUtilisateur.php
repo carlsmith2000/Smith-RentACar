@@ -6,7 +6,7 @@ $allUtilisateur = $vueUtilisateur->getAllUtilisateur();
 $vueChat = new VueMiniChat();
 
 if (isset($_POST['connect'])) {
-    $response = $vueChat->canConnectUser(strtoupper($_POST['users']), $_POST['password']);
+    $response = $vueChat->canConnectUser($_POST['users'], $_POST['password']);
     if ($response->userFind) {
         session_start();
         $_SESSION['utilisateurs'] = $response->utilisateur;

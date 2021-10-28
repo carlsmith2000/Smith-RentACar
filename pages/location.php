@@ -8,6 +8,7 @@ include_once('../autoLoad/autoLoader.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <title>Smith Rent a Car | Location</title>
 </head>
 
@@ -22,10 +23,16 @@ include_once('../autoLoad/autoLoader.php');
     $vueLocation = new VueLocations();
 
     $listeLocation = $vueLocation->getAllLocation();
-    // echo '<pre>'; 
-    // print_r($listeLocation);
+    if (isset($_POST['btnRent'])) {
+        // echo '<pre>'; 
+        // echo($response->id); 
+        $idVoiture = $_POST['idVoiture'];
+        $response = $vueVoitures->researchVoitureById($idVoiture);
+    }
     if (isset($_POST['valider'])) {
-        $controleurLocation->enregistrerLocation(1,2,
+        $controleurLocation->enregistrerLocation(
+            1,
+            2,
             $_POST['dateDebutLoc'],
             $_POST['heureDebutLoc'],
             $_POST['dateFinLoc'],
@@ -309,11 +316,36 @@ include_once('../autoLoad/autoLoader.php');
             <option value="Rang Over">Rang Over</option>
             <option value="Jeep Cherokee">Jeep Cherokee</option>
             <option value="Tesla">Tesla</option>
-            <option value="Ford">Ford</option>
+            <option value="response">response</option>
         </select> -->
 
         <input type="submit" name="valider" value="Suivant">
     </form>
+
+    <div class="allCars">
+        <div class="carInfo">
+            <p class="prix"><?= $response->prix ?> $ / j</p>
+            <img src="../assets/img/<?= $response->img ?>" alt="">
+            <h4><?= $response->marque ?></h4>
+
+            <div class="info1-2">
+                <div class="info1">
+                    <p>Model : <?= $response->model ?></p>
+                    <p>Année : <?= $response->annee ?></p>
+                    <p>Carburant : <?= $response->essence ?></p>
+                    <p>Vitesse : <?= $response->vitesse ?></p>
+                </div>
+
+                <div class="info2">
+                    <p>Siège : <?= $response->nombreSiege ?></p>
+                    <p>Transmition : <?= $response->transmition ?></p>
+                    <p>Porte : <?= $response->nombrePorte ?></p>
+                    <p>Charge : <?= $response->nbMalette ?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

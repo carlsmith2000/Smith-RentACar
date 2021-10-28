@@ -47,7 +47,7 @@ class ModelVoitures extends Connection
         $sql = "SELECT * FROM voitures WHERE id = ? ";
         $stm = $this->getConnection()->prepare($sql);
         $stm->execute([$id]);
-        return COUNT($stm->fetchAll()) > 0;
+        return $stm->fetch();
     }
 
     /** 
@@ -59,7 +59,7 @@ class ModelVoitures extends Connection
         $sql = "SELECT * FROM voitures WHERE marque = ? ";
         $stm = $this->getConnection()->prepare($sql);
         $stm->execute([$marque]);
-        return COUNT($stm->fetchAll()) > 0;
+        return $stm->fetchAll();
     }
 
      /** 

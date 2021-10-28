@@ -5,7 +5,7 @@
             return $this->getAllVoitures();
         }
 
-        public function researchUtilisateurById($id){
+        public function researchVoitureById($id){
             return $this->researchVoituresById($id);
         }
 
