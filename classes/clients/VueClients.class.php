@@ -6,7 +6,7 @@
         }
 
         public function researchTenetById($id){
-            return $this->researchTenetsById($id);
+            return (object)$this->researchTenetsById($id);
         }
     }
 ?>

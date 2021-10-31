@@ -39,12 +39,15 @@ class ModelClients extends Connection
     /** 
      * Cette fonction Permet de rechercher et recuperer un Locataire  
      */
-    protected function researchTenetsById($id)
+    protected function researchTenetsById($code)
     {
-        $sql = "SELECT * FROM clients WHERE id = ? ";
+        $sql = "SELECT * FROM clients WHERE codeConnexion = ? ";
         $stm = $this->getConnection()->prepare($sql);
-        $stm->execute([$id]);
-        return COUNT($stm->fetchAll()) > 0;
+        $stm->execute([$code]);
+        return [
+            'found'=>$stm->rowCount(),
+            'clientFound'=>$stm->fetch()
+        ];
     }
 
     /** 

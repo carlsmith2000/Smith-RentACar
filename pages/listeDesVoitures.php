@@ -40,7 +40,7 @@ $Fiats = $vuevoitures->researchVoituresByMarques('Fiat');
                 <div class="carInfo">
                     <p class="prix"><?= $range_over->prix ?> $</p>
                     <img src="../assets/img/<?= $range_over->img ?>" alt="">
-                    <h4><?= $range_over->marque ?></h4>
+                    <h3><?= $range_over->marque ?></h3>
 
                     <div class="info1-2">
                         <div class="info1">
@@ -92,7 +92,7 @@ $Fiats = $vuevoitures->researchVoituresByMarques('Fiat');
                 <div class="carInfo">
                     <p class="prix"><?= $Jepp->prix ?> $</p>
                     <img src="../assets/img/<?= $Jepp->img ?>" alt="">
-                    <h4><?= $Jepp->marque ?></h4>
+                    <h3><?= $Jepp->marque ?></h3>
 
                     <div class="info1-2">
                         <div class="info1">
@@ -134,7 +134,7 @@ $Fiats = $vuevoitures->researchVoituresByMarques('Fiat');
                 <div class="carInfo">
                     <p class="prix"><?= $Infiniti->prix ?> $</p>
                     <img src="../assets/img/<?= $Infiniti->img ?>" alt="">
-                    <h4><?= $Infiniti->marque ?></h4>
+                    <h3><?= $Infiniti->marque ?></h3>
 
                     <div class="info1-2">
                         <div class="info1">
@@ -186,7 +186,7 @@ $Fiats = $vuevoitures->researchVoituresByMarques('Fiat');
                 <div class="carInfo">
                     <p class="prix"><?= $Ford->prix ?> $</p>
                     <img src="../assets/img/<?= $Ford->img ?>" alt="">
-                    <h4><?= $Ford->marque ?></h4>
+                    <h3><?= $Ford->marque ?></h3>
 
                     <div class="info1-2">
                         <div class="info1">
@@ -227,7 +227,7 @@ $Fiats = $vuevoitures->researchVoituresByMarques('Fiat');
                 <div class="carInfo">
                     <p class="prix"><?= $Fiat->prix ?> $</p>
                     <img src="../assets/img/<?= $Fiat->img ?>" alt="">
-                    <h4><?= $Fiat->marque ?></h4>
+                    <h3><?= $Fiat->marque ?></h3>
 
                     <div class="info1-2">
                         <div class="info1">
