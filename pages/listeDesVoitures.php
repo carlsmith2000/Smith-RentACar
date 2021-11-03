@@ -1,16 +1,18 @@
 <?php
 include_once('../autoLoad/autoLoader.php');
-
+// session_start();
 $vuevoitures = new VueVoitures();
 $allVoiture =  $vuevoitures->getAllVoiture();
 
-$range_overs = $vuevoitures->researchVoituresByMarques('Rang Rover');
-$Jepps = $vuevoitures->researchVoituresByMarques('Jepp');
-$Infinitis = $vuevoitures->researchVoituresByMarques('Infiniti');
-$Fords = $vuevoitures->researchVoituresByMarques('Ford');
-$Fiats = $vuevoitures->researchVoituresByMarques('Fiat');
+$range_overs = $vuevoitures->researchVoituresByMarques('Rang Rover')->voiture;
+$Jepps = $vuevoitures->researchVoituresByMarques('Jepp')->voiture;
+$Infinitis = $vuevoitures->researchVoituresByMarques('Infiniti')->voiture;
+$Fords = $vuevoitures->researchVoituresByMarques('Ford')->voiture ;
+$Fiats = $vuevoitures->researchVoituresByMarques('Fiat')->voiture ;
 // echo '<pre>'; 
-// print_r($allVoiture);
+// print_r($Infinitis);
+
+ 
 ?>
 
 <!DOCTYPE html>

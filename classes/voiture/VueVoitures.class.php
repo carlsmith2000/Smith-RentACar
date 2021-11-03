@@ -6,15 +6,15 @@
         }
 
         public function researchVoitureById($id){
-            return $this->researchVoituresById($id);
+            return (object)$this->researchVoituresById($id);
         }
 
         public function researchVoituresByMarques($marque){
-            return $this->researchVoituresByMarque($marque);
+            return  (object)$this->researchVoituresByMarque($marque);
         }
 
         public function researchVoituresByModels($model){
-            return $this->researchVoituresByModel($model);
+            return  (object)$this->researchVoituresByModel($model);
         }
     }
 ?>

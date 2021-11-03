@@ -5,26 +5,27 @@ class ModelVoitures extends Connection
      * Cette fonction Permet d'enregistrer 
      * des Voitures dans la table Voitures
      */
-    protected function enregistrerVoitures($imm, $marque, $model, $annee, $transmition, $essence, $modeFonct, $prix, $couleur, $vitesse, $disponibilite, $nombrePorte, $nombreSiege){
-    $sql = "INSERT INTO voitures VALUES (null,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    $stm = $this->getConnection()->prepare($sql);
-    $stm->execute(
-        [
-            $imm, 
-            $marque, 
-            $model, 
-            $annee, 
-            $transmition, 
-            $essence, 
-            $modeFonct, 
-            $prix, 
-            $couleur, 
-            $vitesse, 
-            $disponibilite, 
-            $nombrePorte, 
-            $nombreSiege, 
-        ]
-    );
+    protected function enregistrerVoitures($imm, $marque, $model, $annee, $transmition, $essence, $modeFonct, $prix, $couleur, $vitesse, $disponibilite, $nombrePorte, $nombreSiege)
+    {
+        $sql = "INSERT INTO voitures VALUES (null,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stm = $this->getConnection()->prepare($sql);
+        $stm->execute(
+            [
+                $imm,
+                $marque,
+                $model,
+                $annee,
+                $transmition,
+                $essence,
+                $modeFonct,
+                $prix,
+                $couleur,
+                $vitesse,
+                $disponibilite,
+                $nombrePorte,
+                $nombreSiege,
+            ]
+        );
     }
 
     /** 
@@ -47,7 +48,10 @@ class ModelVoitures extends Connection
         $sql = "SELECT * FROM voitures WHERE id = ? ";
         $stm = $this->getConnection()->prepare($sql);
         $stm->execute([$id]);
-        return $stm->fetch();
+        return [
+            "voiture" => $stm->fetch(),
+            "carFound" => $stm->rowCount()
+        ];
     }
 
     /** 
@@ -59,10 +63,13 @@ class ModelVoitures extends Connection
         $sql = "SELECT * FROM voitures WHERE marque = ? ";
         $stm = $this->getConnection()->prepare($sql);
         $stm->execute([$marque]);
-        return $stm->fetchAll();
+        return [
+            "voiture" => $stm->fetchAll(),
+            "carFound" => $stm->rowCount()
+        ];
     }
 
-     /** 
+    /** 
      * Cette fonction Permet de rechercher et recuperer les Voitures
      * de meme Model.
      */
@@ -71,7 +78,10 @@ class ModelVoitures extends Connection
         $sql = "SELECT * FROM voitures WHERE model = ? ";
         $stm = $this->getConnection()->prepare($sql);
         $stm->execute([$model]);
-        return COUNT($stm->fetchAll()) > 0;
+        return [
+            "voiture" => $stm->fetchAll(),
+            "carFound" => $stm->rowCount()
+        ];
     }
 
 
@@ -110,19 +120,19 @@ class ModelVoitures extends Connection
         $stm = $this->getConnection()->prepare($sql);
         $stm->execute(
             [
-                $imm, 
-                $marque, 
-                $model, 
-                $annee, 
-                $transmition, 
-                $essence, 
-                $modeFonct, 
-                $prix, 
-                $couleur, 
-                $vitesse, 
-                $disponibilite, 
-                $nombrePorte, 
-                $nombreSiege, 
+                $imm,
+                $marque,
+                $model,
+                $annee,
+                $transmition,
+                $essence,
+                $modeFonct,
+                $prix,
+                $couleur,
+                $vitesse,
+                $disponibilite,
+                $nombrePorte,
+                $nombreSiege,
                 $id
             ]
         );

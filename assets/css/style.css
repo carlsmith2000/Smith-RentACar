@@ -223,6 +223,11 @@ body {
     border-radius: .3rem;
 }
 
+.input-2 {
+    color: black;
+    background: white;
+}
+
 .inputUsers,
 .inputPassword {
     width: 245px;
@@ -457,16 +462,29 @@ body {
 
 .location-div {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     background: linear-gradient(rgba(13, 40, 56, 0.7), rgba(14, 41, 71, 0.575)), url('../img/Jeep_Wrangler_80th_FirecrackerRed_2p_565x330.png');
     background-size: inherit;
     background-repeat: no-repeat;
     background-position: center;
-    width: 80%;
+    width: 85%;
     border-radius: .3rem;
     flex-wrap: wrap-reverse;
-    /* padding: 5rem 5rem 0 0; */
+    padding: 2rem;
+}
+
+.paiement {
+    background: rgba(8, 33, 48, 0.137);
+    width: 20%;
+    min-height: 68%;
+    border-radius: .4rem;
+    padding: 2rem;
+}
+
+.paiement label {
+    color: white;
+    margin-top: .5rem;
 }
 
 .location-div form h3 {
@@ -489,6 +507,10 @@ body {
     display: flex;
     margin-top: 2rem;
     flex-wrap: wrap;
+}
+
+.lbi {
+    display: none;
 }
 
 
