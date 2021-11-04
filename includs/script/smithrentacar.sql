@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : jeu. 28 oct. 2021 à 21:15
--- Version du serveur : 10.4.19-MariaDB
--- Version de PHP : 8.0.7
+-- Host: 127.0.0.1
+-- Generation Time: Nov 04, 2021 at 01:03 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,16 +18,14 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `smithrentacar`
+-- Database: `smithrentacar`
 --
-
--- --------------------------------------------------------
-
 CREATE database smithrentacar;
 USE smithrentacar;
+-- --------------------------------------------------------
 
 --
--- Structure de la table `clients`
+-- Table structure for table `clients`
 --
 
 CREATE TABLE `clients` (
@@ -43,21 +41,21 @@ CREATE TABLE `clients` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `clients`
+-- Dumping data for table `clients`
 --
 
 INSERT INTO `clients` (`id_client`, `nomComplet`, `age`, `cin`, `dateExpirationPermis`, `numero`, `mail`, `adresse`, `codeConnexion`) VALUES
-(1, 'Carl Smith ETIENNE', 21, 1037826620, '2021-10-13', '36787853', 'carlsmithetienne2000@gmail.com', 'Haiti', 0),
-(5, 'Sainnamise Desire', 40, 1035526620, '2019-02-22', '36500075', 'sainnamisedesire1985@gmail.com', 'USA', 0),
-(6, 'Sainnamise Desire', 40, 1035526620, '2021-10-20', '36500075', 'sainnamisedesire1985@gmail.com', 'USA', 0),
-(7, 'Gandy Desire', 26, 1037844620, '2018-10-16', '35543643', 'desiregandy123@gmail.com', 'Haiti', 0),
-(8, 'Marc Tyson Clebert', 27, 1007826620, '2015-10-05', '367555553', 'marctysoncleber123@gmail.com', 'Japon', 0),
-(9, 'Wenchy Price Cadet', 22, 1007826620, '2021-10-08', '3674453', 'wenchypricecadet12@gmai.com', 'Canada', 0);
+(1, 'Carl Smith ETIENNE', 21, 1037826620, '2021-10-13', '36787853', 'carlsmithetienne2000@gmail.com', 'Haiti', 12345),
+(5, 'Sainnamise Desire', 40, 1035526620, '2019-02-22', '36500075', 'sainnamisedesire1985@gmail.com', 'USA', 55),
+(6, 'Sainnamise Desire', 40, 1035526620, '2021-10-20', '36500075', 'sainnamisedesire1985@gmail.com', 'USA', 12211),
+(7, 'Gandy Desire', 26, 1037844620, '2018-10-16', '35543643', 'desiregandy123@gmail.com', 'Haiti', 1),
+(8, 'Marc Tyson Clebert', 27, 1007826620, '2015-10-05', '367555553', 'marctysoncleber123@gmail.com', 'Japon', 1112),
+(9, 'Wenchy Price Cadet', 22, 1007826620, '2021-10-08', '3674453', 'wenchypricecadet12@gmai.com', 'Canada', 36787853);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `locations`
+-- Table structure for table `locations`
 --
 
 CREATE TABLE `locations` (
@@ -72,25 +70,22 @@ CREATE TABLE `locations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `locations`
+-- Dumping data for table `locations`
 --
 
 INSERT INTO `locations` (`id`, `id_client`, `id_voiture`, `dateDebut`, `dateFin`, `heureDebut`, `heureFin`, `pays`) VALUES
-(1, 1, 3, '2021-09-10', '2021-10-10', '16:00:00', '16:00:00', ''),
-(2, 5, 1, '2021-10-19', '2021-11-24', '12:00:00', '12:00:00', ''),
-(5, 7, 4, '2021-09-05', '2021-10-10', '09:00:00', '18:00:00', ''),
-(7, 1, 2, '2021-10-14', '2021-10-05', '04:10:00', '04:15:00', 'Azerbaidjan'),
-(10, 1, 2, '0000-00-00', '0000-00-00', '00:00:00', '00:00:00', 'Bolivie'),
-(11, 1, 19, '2021-09-30', '2021-10-12', '08:24:00', '09:58:00', 'Haiti'),
-(12, 1, 19, '2021-10-15', '2021-10-18', '11:00:00', '07:05:00', 'Haiti'),
-(13, 1, 19, '2021-10-15', '2021-10-18', '11:00:00', '07:05:00', 'Haiti'),
-(14, 1, 3, '2021-10-17', '2021-10-22', '10:02:00', '00:02:00', 'Allemagne'),
-(15, 1, 19, '0000-00-00', '0000-00-00', '00:00:00', '00:00:00', 'Haiti');
+(34, 1, 15, '2021-11-19', '2021-11-19', '01:01:00', '02:57:00', 'Haiti'),
+(35, 1, 15, '2021-11-19', '2021-11-19', '01:01:00', '02:57:00', 'Haiti'),
+(36, 1, 15, '2021-11-19', '2021-11-19', '01:01:00', '02:57:00', 'Haiti'),
+(37, 5, 19, '2021-11-09', '2021-11-24', '06:10:00', '02:14:00', 'Haiti'),
+(38, 5, 19, '2021-11-09', '2021-11-24', '06:10:00', '02:14:00', 'Haiti'),
+(39, 9, 8, '2021-11-17', '2021-11-19', '05:11:00', '05:11:00', 'Bahamas'),
+(40, 1, 1, '2021-11-11', '2021-12-01', '07:17:00', '04:17:00', 'Haiti');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `message`
+-- Table structure for table `message`
 --
 
 CREATE TABLE `message` (
@@ -102,7 +97,7 @@ CREATE TABLE `message` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `message`
+-- Dumping data for table `message`
 --
 
 INSERT INTO `message` (`id`, `id_utilisateurs`, `message`, `dateDenvoi`, `heureDenvoi`) VALUES
@@ -119,12 +114,19 @@ INSERT INTO `message` (`id`, `id_utilisateurs`, `message`, `dateDenvoi`, `heureD
 (11, 8, 'Dim non koman madan\'m ou ye', '2021-10-25', '03:47:53'),
 (12, 5, 'sak regle men\r\n', '2021-10-25', '03:48:13'),
 (13, 4, 'bonjour\r\n', '2021-10-28', '07:36:13'),
-(14, 4, 'wanfom', '2021-10-28', '07:36:26');
+(14, 4, 'wanfom', '2021-10-28', '07:36:26'),
+(15, 4, 'yo', '2021-10-30', '07:25:26'),
+(16, 4, 'Sak gen la', '2021-10-30', '07:27:00'),
+(17, 8, 'baz', '2021-10-30', '07:27:49'),
+(18, 8, 'baz', '2021-10-30', '07:28:43'),
+(19, 4, 'yoooooooooooooooooooooooooooooo', '2021-11-01', '03:14:46'),
+(20, 8, 'sakhdsjbcjkdshk', '2021-11-01', '03:15:14'),
+(21, 8, 'sakhdsjbcjkdshk', '2021-11-01', '03:15:38');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateurs`
+-- Table structure for table `utilisateurs`
 --
 
 CREATE TABLE `utilisateurs` (
@@ -135,13 +137,13 @@ CREATE TABLE `utilisateurs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `utilisateurs`
+-- Dumping data for table `utilisateurs`
 --
 
 INSERT INTO `utilisateurs` (`id_utilisateur`, `pseudo`, `statut`, `password`) VALUES
 (4, 'Smith', 0, 'smith123'),
 (5, 'Djeby', 0, 'j1235'),
-(8, 'Wenchy', 0, 'wpc1234'),
+(8, 'Wenchy', 1, 'wpc1234'),
 (9, 'Tyson', 0, 'ty2020'),
 (11, 'TOTO', 0, '12345'),
 (12, 'Nina', 0, '123'),
@@ -157,7 +159,7 @@ INSERT INTO `utilisateurs` (`id_utilisateur`, `pseudo`, `statut`, `password`) VA
 -- --------------------------------------------------------
 
 --
--- Structure de la table `voitures`
+-- Table structure for table `voitures`
 --
 
 CREATE TABLE `voitures` (
@@ -179,7 +181,7 @@ CREATE TABLE `voitures` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `voitures`
+-- Dumping data for table `voitures`
 --
 
 INSERT INTO `voitures` (`id`, `imm`, `marque`, `model`, `annee`, `transmition`, `essence`, `nbMalette`, `prix`, `couleur`, `vitesse`, `disponibilite`, `nombrePorte`, `nombreSiege`, `img`) VALUES
@@ -205,17 +207,17 @@ INSERT INTO `voitures` (`id`, `imm`, `marque`, `model`, `annee`, `transmition`, 
 (20, 'LO-22-110', 'Jepp', 'Wrangler', 2021, 'Auto', 'Gazoline', 0, 220, 'Bleu marine', '800 km/h', 1, 2, 2, 'jeep-cj_7-removebg-preview.png');
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `clients`
+-- Indexes for table `clients`
 --
 ALTER TABLE `clients`
   ADD PRIMARY KEY (`id_client`);
 
 --
--- Index pour la table `locations`
+-- Indexes for table `locations`
 --
 ALTER TABLE `locations`
   ADD PRIMARY KEY (`id`),
@@ -223,71 +225,71 @@ ALTER TABLE `locations`
   ADD KEY `fk_voiture` (`id_voiture`);
 
 --
--- Index pour la table `message`
+-- Indexes for table `message`
 --
 ALTER TABLE `message`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_id_utilisateurs` (`id_utilisateurs`);
 
 --
--- Index pour la table `utilisateurs`
+-- Indexes for table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
   ADD PRIMARY KEY (`id_utilisateur`);
 
 --
--- Index pour la table `voitures`
+-- Indexes for table `voitures`
 --
 ALTER TABLE `voitures`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `clients`
+-- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
   MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
--- AUTO_INCREMENT pour la table `locations`
+-- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT pour la table `message`
+-- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT pour la table `utilisateurs`
+-- AUTO_INCREMENT for table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
   MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
--- AUTO_INCREMENT pour la table `voitures`
+-- AUTO_INCREMENT for table `voitures`
 --
 ALTER TABLE `voitures`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- Contraintes pour les tables déchargées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `locations`
+-- Constraints for table `locations`
 --
 ALTER TABLE `locations`
   ADD CONSTRAINT `fk_client` FOREIGN KEY (`id_client`) REFERENCES `clients` (`id_client`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_voiture` FOREIGN KEY (`id_voiture`) REFERENCES `voitures` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `message`
+-- Constraints for table `message`
 --
 ALTER TABLE `message`
   ADD CONSTRAINT `fk_id_utilisateurs` FOREIGN KEY (`id_utilisateurs`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
