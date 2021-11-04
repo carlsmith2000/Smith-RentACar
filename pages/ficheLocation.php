@@ -4,6 +4,12 @@ $vueClient = new VueClients();
 $vueVoitures = new VueVoitures();
 $vueLocation = new VueLocations();
 
+$controleurVoitures = new ControleurVoitures();
+$vueVoitures = new VueVoitures();
+
+$controleurLocation = new ControleurLocations();
+$vueLocation = new VueLocations();
+
 if (isset($_POST['valider'])) {
     $dateDebutLoc = $_POST['dateDebutLoc'];
     $heureDebutLoc = $_POST['heureDebutLoc'];
@@ -13,17 +19,27 @@ if (isset($_POST['valider'])) {
     $idVoiture = $_POST['idVtr'];
     $response = $vueVoitures->researchVoitureById($idVoiture);
     $client = $vueClient->researchTenetById($_POST['noCompte']);
+    
 
+}
+if(isset($_POST['confirmer'])){
     ?>
         <script>
-            alert("Merci d'avoir fait choix de Smith Ren a Car");
-            </script>
+            alert("Location fait avec succès");
+        </script>
     <?php
-     header("localhost:./listeDesVoitures.php");
+    $controleurLocation->enregistrerLocation(
+        $_POST['idClient'],
+        $_POST['idVtr'],
+        $_POST['dateDebutLoc'],
+        $_POST['heureDebutLoc'],
+        $_POST['dateFinLoc'],
+        $_POST['heureFinLoc'],
+        $_POST['pays']
+    );
+    header("location:./listeDesVoitures.php");
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,17 +81,18 @@ if (isset($_POST['valider'])) {
 
         <div>
 
-            <form action="ficheLocation.php" method="POST">
+            <form action="./ficheLocation.php" method="POST">
 
                 <div class="global-labelIput">
                     <div class="labelIput">
                         <label for="nomClient">Nom Complet Client</label>
-                        <input class="input input-2" type="text" name="nomClient" value="<?= $client->clientFound->nomComplet ?>" disabled>
+                        <input class="input input-2" type="text" name="nomClient" value="<?= $client->clientFound->nomComplet ?>" >
                     </div>
 
                     <div class="labelIput">
                         <label for="dateDebutLoc">Date Debut Location</label>
-                        <input class="input input-2" type="date" name="dateDebutLoc" value="<?= $dateDebutLoc ?>" disabled>
+                        <input class="input input-2" type="date" name="dateDebutLoc" value="<?= $dateDebutLoc ?>" >
+                        <!-- disabledo -->
                     </div>
                 </div>
 
@@ -83,24 +100,24 @@ if (isset($_POST['valider'])) {
                 <div class="global-labelIput">
                     <div class="labelIput">
                         <label for="adresseClient">Adresse Client</label>
-                        <input class="input input-2" type="text" name="adresseClient" value="<?= $client->clientFound->adresse ?>" disabled>
+                        <input class="input input-2" type="text" name="adresseClient" value="<?= $client->clientFound->adresse ?>" >
                     </div>
 
                     <div class="labelIput">
                         <label for="heureDebutLoc">Heure Debut Location</label>
-                        <input class="input input-2" type="time" name="heureDebutLoc" value="<?= $heureDebutLoc ?>" disabled>
+                        <input class="input input-2" type="time" name="heureDebutLoc" value="<?= $heureDebutLoc ?>" >
                     </div>
                 </div>
 
                 <div class="global-labelIput">
                     <div class="labelIput">
                         <label for="mailClient">Email Client</label>
-                        <input class="input input-2" type="mail" name="mailClient" value="<?= $client->clientFound->mail ?>" disabled>
+                        <input class="input input-2" type="mail" name="mailClient" value="<?= $client->clientFound->mail ?>" >
                     </div>
 
                     <div class="labelIput">
                         <label for="dateFinLoc">Date Fin Location</label>
-                        <input class="input input-2" type="date" name="dateFinLoc" value="<?= $dateFinLoc ?>" disabled>
+                        <input class="input input-2" type="date" name="dateFinLoc" value="<?= $dateFinLoc ?>" >
                     </div>
                 </div>
 
@@ -108,17 +125,18 @@ if (isset($_POST['valider'])) {
 
                     <div class="labelIput">
                         <label for="noCompte">Pays De Ramassage</label>
-                        <input class="input input-2" type="text" name="pays" value="<?= $pays ?>" disabled>
+                        <input class="input input-2" type="text" name="pays" value="<?= $pays ?>" >
                     </div>
 
                     <div class="labelIput">
                         <label for="heureFinLoc">Heure Fin Location</label>
-                        <input class="input input-2" type="time" name="heureFinLoc" value="<?= $heureFinLoc ?>" disabled>
+                        <input class="input input-2" type="time" name="heureFinLoc" value="<?= $heureFinLoc ?>" >
                     </div>
                 </div>
 
                 <input type="hidden" name="idVtr" value="<?= $idVoiture ?> ">
-                <input class="btn" type="submit" name="valider" value="Suivant">
+                <input type="hidden" name="idClient" value="<?= $client->clientFound->id_client ?> ">
+                <input class="btn" type="submit" name="confirmer" value="Valider">
             </form>
         </div>
 
@@ -139,12 +157,7 @@ if (isset($_POST['valider'])) {
 
                     // document.getElementById("noCarte").add();
                     // document.getElementById("noCarteL").add();
-                }else{
-                    document.getElementById("moncash").classList.remove("lbi");
-                    document.getElementById("carte").classList.remove("lbi");
-
-                    // alert("Choisissez votre mode Paiement Valide");
-                }
+                } 
             }
         </script>
 
@@ -162,12 +175,12 @@ if (isset($_POST['valider'])) {
 
             <div class="labelIput" id="carte">
                 <label for="numeroCarte" id="noCarteL">numero Carte</label>
-                <input id="noCarte" class="input" type="number" name="numeroCarte">
+                <input id="noCarte" class="input" type="number" name="numeroCarte" required>
             </div>
 
             <div class="labelIput" id="moncash">
                 <label for="numeroCarte" id="noMonCashL">numero Téléphone Mon Cash</label>
-                <input id="noMonCash" class="input" type="number" name="numeroCarte">
+                <input id="noMonCash" class="input" type="number" name="numeroCarte" required>
             </div>
         </div>
     </div>

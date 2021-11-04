@@ -44,7 +44,7 @@ include_once('../autoLoad/autoLoader.php');
                     $_POST['heureDebutLoc'],
                     $_POST['dateFinLoc'],
                     $_POST['heureFinLoc'],
-                    $_POST['pays'],
+                    $_POST['pays']
                 );
     ?>
                 <script>
@@ -60,24 +60,24 @@ include_once('../autoLoad/autoLoader.php');
                 <div class="global-labelIput">
                     <div class="labelIput">
                         <label for="dateDebutLoc">Date Debut Location</label>
-                        <input class="input" type="date" name="dateDebutLoc">
+                        <input class="input" type="date" name="dateDebutLoc" required>
                     </div>
 
                     <div class="labelIput">
                         <label for="heureDebutLoc">Heure Debut Location</label>
-                        <input class="input" type="time" name="heureDebutLoc">
+                        <input class="input" type="time" name="heureDebutLoc" required>
                     </div>
                 </div>
 
                 <div class="global-labelIput">
                     <div class="labelIput">
                         <label for="dateFinLoc">Date Fin Location</label>
-                        <input class="input" type="date" name="dateFinLoc">
+                        <input class="input" type="date" name="dateFinLoc" required>
                     </div>
 
                     <div class="labelIput">
                         <label for="heureFinLoc">Date Fin Location</label>
-                        <input class="input" type="time" name="heureFinLoc">
+                        <input class="input" type="time" name="heureFinLoc" required>
                     </div>
                 </div>
 
@@ -344,7 +344,7 @@ include_once('../autoLoad/autoLoader.php');
 
                     <div class="labelIput">
                         <label for="noCompte">No Compte</label>
-                        <input class="input" type="number" name="noCompte" placeholder="Entrer le No Compte Client">
+                        <input class="input" type="number" name="noCompte" placeholder="Entrer le No Compte Client" required>
                     </div>
                 </div>
                 <input type="hidden" name="idVtr" value="<?= $idVoiture ?> ">

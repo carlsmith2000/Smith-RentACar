@@ -1,168 +1,164 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'poppins', sans-serif;
-    top: 50;
-    height: 100vh;
-    box-sizing: border-box;
-}
-
-
-/* h1{
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'poppins', sans-serif;
+        top: 50;
+        height: 100vh;
+        box-sizing: border-box;
+    }
+    /* h1{
     margin-top: -40px;
     margin-left: 85px;
     margin-bottom: 50px ;
 } */
-
-.center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(112, 112, 112, 0.267);
-    box-shadow: 2.5px 2.5px 2.5px 2.5px rgba(0, 0, 0, 0.664);
-    width: 370px;
-    /* height: 65%; */
-    border-radius: .5rem;
-}
-
-.centerC {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.block_1 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    width: 33rem;
-    background: rgba(153, 153, 153, 0.637);
-    padding: 1rem;
-    border-radius: .8rem;
-    margin-left: 150px;
-    box-shadow: 5px 5px 15px 5px rgb(7, 20, 42);
-}
-
-.btns {
-    margin-top: -3rem;
-    display: flex;
-    justify-content: center;
-    margin-left: 150px;
-}
-
-.txt_input {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: 10%;
-}
-
-.strong {
-    background: rgb(47, 124, 168);
-    padding: .5rem;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    /* margin-right: 5px; */
-    color: white;
-}
-
-.utilisateur {
-    overflow: auto;
-    height: 100vh;
-    background: rgba(95, 143, 172, 0.329);
-    min-height: 100vh;
-    width: 30vw;
-}
-
-.inputMessage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 92%;
-    left: 30%;
-}
-
-.curentUser {
-    display: flex;
-    position: absolute;
-    left: 88%;
-    /* background: rgba(95, 143, 172, 0.329);
+    
+    .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(112, 112, 112, 0.267);
+        box-shadow: 2.5px 2.5px 2.5px 2.5px rgba(0, 0, 0, 0.664);
+        width: 370px;
+        /* height: 65%; */
+        border-radius: .5rem;
+    }
+    
+    .centerC {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .block_1 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 33rem;
+        background: rgba(153, 153, 153, 0.637);
+        padding: 1rem;
+        border-radius: .8rem;
+        margin-left: 150px;
+        box-shadow: 5px 5px 15px 5px rgb(7, 20, 42);
+    }
+    
+    .btns {
+        margin-top: -3rem;
+        display: flex;
+        justify-content: center;
+        margin-left: 150px;
+    }
+    
+    .txt_input {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 10%;
+    }
+    
+    .strong {
+        background: rgb(47, 124, 168);
+        padding: .5rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        /* margin-right: 5px; */
+        color: white;
+    }
+    
+    .utilisateur {
+        overflow: auto;
+        height: 100vh;
+        background: rgba(95, 143, 172, 0.329);
+        min-height: 100vh;
+        width: 30vw;
+    }
+    
+    .inputMessage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 92%;
+        left: 30%;
+    }
+    
+    .curentUser {
+        display: flex;
+        position: absolute;
+        left: 88%;
+        /* background: rgba(95, 143, 172, 0.329);
     width: 100%; */
-}
-
-.disconnect {
-    border: none;
-    outline: none;
-    border-radius: 1.5rem;
-    background: rgb(219, 72, 72);
-    color: rgb(253, 253, 253);
-}
-
-.disconnect:hover {
-    background: rgb(175, 38, 38);
-}
-
-.disconnect-div {
-    height: 1rem;
-    letter-spacing: .2rem;
-}
-
-#online {
-    background: #bfd70e;
-    border-radius: 50%;
-    width: 5px;
-    height: 5px;
-    border: 2px solid #7e8f01;
-}
-
-#Horsligne {
-    background: #8d8d8d;
-    border-radius: 50%;
-    width: 5px;
-    height: 5px;
-    border: 2px solid #686868;
-}
-
-.msg {
-    height: 35px;
-    width: 600px;
-    border: none;
-    outline: none;
-    background: rgb(95, 143, 172);
-    color: rgb(255, 255, 255);
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 1.5rem;
-    padding: 0rem .3rem 0rem;
-}
-
-.utilisateur p {
-    margin-left: 10px;
-    /* border-bottom: 1px rgba(13, 62, 102, 0.061) solid; */
-    width: 90%;
-    /* border-top: 1px rgba(87, 87, 87, 0.164) solid; */
-    /* padding: .1rem; */
-    color: rgb(1, 43, 77);
-    font-weight: 500;
-    letter-spacing: .2rem;
-}
-
-#sl {
-    color: rgb(43, 149, 43);
-    background-color: rgb(43, 149, 43);
-    width: 90%;
-    height: 90%;
-    border-radius: 50%;
-    margin-left: 35%;
-}
-
-
-/* .curent{
+    }
+    
+    .disconnect {
+        border: none;
+        outline: none;
+        border-radius: 1.5rem;
+        background: rgb(219, 72, 72);
+        color: rgb(253, 253, 253);
+    }
+    
+    .disconnect:hover {
+        background: rgb(175, 38, 38);
+    }
+    
+    .disconnect-div {
+        height: 1rem;
+        letter-spacing: .2rem;
+    }
+    
+    #online {
+        background: #bfd70e;
+        border-radius: 50%;
+        width: 5px;
+        height: 5px;
+        border: 2px solid #7e8f01;
+    }
+    
+    #Horsligne {
+        background: #8d8d8d;
+        border-radius: 50%;
+        width: 5px;
+        height: 5px;
+        border: 2px solid #686868;
+    }
+    
+    .msg {
+        height: 35px;
+        width: 600px;
+        border: none;
+        outline: none;
+        background: rgb(95, 143, 172);
+        color: rgb(255, 255, 255);
+        font-size: 1rem;
+        font-weight: 500;
+        border-radius: 1.5rem;
+        padding: 0rem .3rem 0rem;
+    }
+    
+    .utilisateur p {
+        margin-left: 10px;
+        /* border-bottom: 1px rgba(13, 62, 102, 0.061) solid; */
+        width: 90%;
+        /* border-top: 1px rgba(87, 87, 87, 0.164) solid; */
+        /* padding: .1rem; */
+        color: rgb(1, 43, 77);
+        font-weight: 500;
+        letter-spacing: .2rem;
+    }
+    
+    #sl {
+        color: rgb(43, 149, 43);
+        background-color: rgb(43, 149, 43);
+        width: 90%;
+        height: 90%;
+        border-radius: 50%;
+        margin-left: 35%;
+    }
+    /* .curent{
     display: flex;
     justify-content: flex-end;
     background:rgba(47, 124, 168, 0.609);
@@ -170,361 +166,363 @@ body {
     padding: 1rem;
     border-radius: .8rem;
 }*/
-
-.message {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    background-image: url('../img/bg2.png');
-    background-attachment: fixed;
-    height: 100vh;
-    overflow: hidden auto;
-    /* justify-content: flex-end; */
-    /* overflow-y: auto; */
-    /* position: fixed; */
-    /* width: 80%; */
-}
-
-.curent {
-    margin-left: 75%;
-    width: 15vw;
-    background: rgba(47, 124, 168, 0.644);
-    border-radius: .5rem;
-    padding: .5rem;
-    box-sizing: border-box;
-}
-
-.auther {
-    margin-left: 10%;
-    width: 15vw;
-    background: rgba(24, 66, 90, 0.644);
-    border-radius: .5rem;
-    padding: .5rem;
-    box-sizing: border-box;
-}
-
-#time {
-    color: rgb(206, 206, 206);
-    font-size: .6rem;
-    margin-left: 70%;
-}
-
-.chat {
-    display: flex;
-}
-
-.input,
-.inputUsers,
-.inputPassword {
-    height: 35px;
-    width: 235px;
-    border: none;
-    outline: none;
-    border-radius: .3rem;
-}
-
-.input-2 {
-    color: black;
-    background: white;
-}
-
-.inputUsers,
-.inputPassword {
-    width: 245px;
-    border-radius: .4rem;
-}
-
-label {
-    text-align: center;
-    color: rgb(16, 55, 105);
-    margin-bottom: .5rem;
-}
-
-.user-online {
-    padding: 0rem .3rem 0rem;
-    display: flex;
-    align-items: center;
-}
-
-.txt_input div {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-}
-
-.enLigne {
-    width: 30%;
-    font-size: .7rem;
-    color: rgb(16, 55, 105);
-    letter-spacing: normal;
-    left: 5rem;
-}
-
-.globalmessage {
-    display: flex;
-    height: 100vh;
-    /* overflow: scroll;
-    overflow-x: hidden; */
-    width: 100vw;
-}
-
-
-/* .formAjoutC{
-    display: flex;
-} */
-
-.btn {
-    color: white;
-    background: rgb(219, 143, 21);
-    border: none;
-    border-radius: .5rem;
-    height: 35px;
-    width: 135px;
-    transition: .5s;
-    margin: .5rem;
-}
-
-.btnSend {
-    color: rgb(255, 255, 255);
-    font-weight: 700;
-    background: rgb(95, 143, 172);
-    border: none;
-    border-radius: 5rem;
-    height: 35px;
-    width: 80px;
-    /* top:-19%; */
-    position: absolute;
-}
-
-textarea {
-    resize: none;
-}
-
-.link_create_account .link_create {
-    display: flex;
-    justify-content: center;
-    padding: .7rem;
-    color: rgb(33, 57, 71);
-    text-decoration: none;
-}
-
-.btn:hover {
-    /* background: rgba(240, 149, 29, 0.794); */
-    letter-spacing: .3rem;
-    transition: .5s;
-}
-
-.allBtn {
-    display: flex;
-    justify-content: center;
-    padding: .5rem;
-}
-
-div h1 {
-    text-align: center;
-    color: rgb(16, 55, 105);
-}
-
-body {
-    background: rgb(235, 235, 235);
-}
-
-.banner {
-    box-sizing: border-box;
-    background: linear-gradient(rgba(42, 47, 58, 0.7), rgba(51, 54, 65, 0.7)), url('../img/2022-jeep-compass-trailhawk-4xe-109-1617814641.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* transition: .5s; */
-}
-
-.banner h1 {
-    color: rgb(236, 205, 28);
-    font-size: 4.5rem;
-}
-
-.allCars .carInfo img {
-    width: 75%;
-    height: 55%;
-    margin-top: -2.5rem;
-    border-radius: .3rem;
-    z-index: 0;
-    transition: .3s;
-}
-
-.allCars .carInfo img:hover {
-    width: 78%;
-    height: 58%;
-    /* margin-top: -2.5rem;
-    border-radius: .3rem;
-    z-index: 0; */
-    transition: .3s;
-}
-
-.allCars {
-    display: flex;
-    justify-content: space-around;
-    /* flex-direction: column; */
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-    /* align-items: center; */
-}
-
-.carInfo {
-    background: linear-gradient(120deg, #e6e6e69b, #fcde5796, #9e9e9eee);
-    width: 245px;
-    height: 290px;
-    border-radius: .2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 2.5px 2.5px 2.5px 2.5px rgba(0, 0, 0, 0.664);
-    margin-bottom: 3rem;
-    /* color: rgba(29, 29, 29, 0.171); */
-}
-
-.carInfo .prix {
-    /* margin-top: -.2rem; */
-    background: rgb(218, 67, 56);
-    margin-left: 68%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-    padding: .2rem;
-    box-shadow: 2.5px 2.5px 2.5px 2.5px rgba(0, 0, 0, 0.664);
-    color: white;
-    border-radius: .3rem 0rem .3rem 0;
-    z-index: 1;
-}
-
-.allCars .carInfo h4 {
-    margin-top: -2px;
-}
-
-.info1-2 {
-    display: flex;
-    justify-content: space-between;
-    font-size: .8rem;
-    margin-top: -1rem;
-    text-align: center;
-}
-
-.marque {
-    border-bottom: red 4px solid;
-    width: 8%;
-    margin-top: -25px;
-    margin-bottom: 4rem;
-}
-
-.div-marque {
-    display: flex;
-    justify-content: center;
-}
-
-.louer {
-    background: rgb(218, 67, 56);
-    color: white;
-    font-size: 700;
-    text-decoration: none;
-    padding: .2rem;
-    border-radius: .2rem;
-    margin-top: -.3rem;
-}
-
-.promotion {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.promotion img {
-    width: 30%;
-    height: 25%;
-}
-
-.promotion p {
-    width: 50%;
-}
-
-.bodyLocation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.location-div {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: linear-gradient(rgba(13, 40, 56, 0.7), rgba(14, 41, 71, 0.575)), url('../img/Jeep_Wrangler_80th_FirecrackerRed_2p_565x330.png');
-    background-size: inherit;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 85%;
-    border-radius: .3rem;
-    flex-wrap: wrap-reverse;
-    padding: 2rem;
-}
-
-.paiement {
-    background: rgba(8, 33, 48, 0.137);
-    width: 20%;
-    min-height: 68%;
-    border-radius: .4rem;
-    padding: 2rem;
-}
-
-.paiement label {
-    color: white;
-    margin-top: .5rem;
-}
-
-.location-div form h3 {
-    color: white;
-    font-size: 1.3rem;
-    letter-spacing: 2px;
-}
-
-.labelIput {
-    display: flex;
-    flex-direction: column;
-    margin-right: 1rem;
-}
-
-.global-labelIput .labelIput label {
-    color: white;
-}
-
-.global-labelIput {
-    display: flex;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-}
-
-.lbi {
-    display: none;
-}
-
-
-/* ------------------------------------------------- */
-
-@media only screen and (max-width: 400px) {
-    body {
-        background: rgb(23, 87, 114);
-        /* overflow: hidden; */
+    
+    .message {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background-image: url('../img/bg2.png');
+        background-attachment: fixed;
         height: 100vh;
+        overflow: hidden auto;
+        /* justify-content: flex-end; */
+        /* overflow-y: auto; */
+        /* position: fixed; */
+        /* width: 80%; */
+    }
+    
+    .curent {
+        margin-left: 75%;
+        width: 15vw;
+        background: rgba(47, 124, 168, 0.644);
+        border-radius: .5rem;
+        padding: .5rem;
+        box-sizing: border-box;
+    }
+    
+    .auther {
+        margin-left: 10%;
+        width: 15vw;
+        background: rgba(24, 66, 90, 0.644);
+        border-radius: .5rem;
+        padding: .5rem;
+        box-sizing: border-box;
+    }
+    
+    #time {
+        color: rgb(206, 206, 206);
+        font-size: .6rem;
+        margin-left: 70%;
+    }
+    
+    .chat {
+        display: flex;
+    }
+    
+    .input,
+    .inputUsers,
+    .inputPassword {
+        height: 35px;
+        width: 235px;
+        border: none;
+        outline: none;
+        border-radius: .3rem;
+    }
+    
+    .input-2 {
+        color: black;
+        background: white;
+    }
+    
+    .inputUsers,
+    .inputPassword {
+        width: 245px;
+        border-radius: .4rem;
+    }
+    
+    label {
+        text-align: center;
+        color: rgb(16, 55, 105);
+        margin-bottom: .5rem;
+    }
+    
+    .user-online {
+        padding: 0rem .3rem 0rem;
+        display: flex;
+        align-items: center;
+    }
+    
+    .txt_input div {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    
+    .enLigne {
+        width: 30%;
+        font-size: .7rem;
+        color: rgb(16, 55, 105);
+        letter-spacing: normal;
+        left: 5rem;
+    }
+    
+    .globalmessage {
+        display: flex;
+        height: 100vh;
+        /* overflow: scroll;
+    overflow-x: hidden; */
         width: 100vw;
     }
-    .center {
-        background: none;
-        box-shadow: none;
+    /* .formAjoutC{
+    display: flex;
+} */
+    
+    .btn {
+        color: white;
+        background: rgb(219, 143, 21);
+        border: none;
+        border-radius: .5rem;
+        height: 35px;
+        width: 135px;
+        transition: .5s;
+        margin: .5rem;
     }
-}
+    
+    .btnSend {
+        color: rgb(255, 255, 255);
+        font-weight: 700;
+        background: rgb(95, 143, 172);
+        border: none;
+        border-radius: 5rem;
+        height: 35px;
+        width: 80px;
+        /* top:-19%; */
+        position: absolute;
+    }
+    
+    textarea {
+        resize: none;
+    }
+    
+    .link_create_account .link_create {
+        display: flex;
+        justify-content: center;
+        padding: .7rem;
+        color: rgb(33, 57, 71);
+        text-decoration: none;
+    }
+    
+    .btn:hover {
+        /* background: rgba(240, 149, 29, 0.794); */
+        letter-spacing: .3rem;
+        transition: .5s;
+    }
+    
+    .allBtn {
+        display: flex;
+        justify-content: center;
+        padding: .5rem;
+    }
+    
+    div h1 {
+        text-align: center;
+        color: rgb(16, 55, 105);
+    }
+    
+    body {
+        background: rgb(235, 235, 235);
+    }
+    
+    .banner {
+        box-sizing: border-box;
+        background: linear-gradient(rgba(42, 47, 58, 0.7), rgba(51, 54, 65, 0.7)), url('../img/2022-jeep-compass-trailhawk-4xe-109-1617814641.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* transition: .5s; */
+    }
+    
+    .banner h1 {
+        color: rgb(236, 205, 28);
+        font-size: 4.5rem;
+    }
+    
+    .allCars .carInfo img {
+        width: 75%;
+        height: 55%;
+        margin-top: -2.5rem;
+        border-radius: .3rem;
+        z-index: 0;
+        transition: .3s;
+    }
+    
+    .allCars .carInfo img:hover {
+        width: 78%;
+        height: 58%;
+        /* margin-top: -2.5rem;
+    border-radius: .3rem;
+    z-index: 0; */
+        transition: .3s;
+    }
+    
+    .allCars {
+        display: flex;
+        justify-content: space-around;
+        /* flex-direction: column; */
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+        /* align-items: center; */
+    }
+    
+    .carInfo {
+        background: linear-gradient(120deg, #e6e6e69b, #fcde5796, #9e9e9eee);
+        width: 245px;
+        height: 290px;
+        border-radius: .2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 2.5px 2.5px 2.5px 2.5px rgba(0, 0, 0, 0.664);
+        margin-bottom: 3rem;
+        /* color: rgba(29, 29, 29, 0.171); */
+    }
+    
+    .carInfo .prix {
+        /* margin-top: -.2rem; */
+        background: rgb(218, 67, 56);
+        margin-left: 68%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        padding: .2rem;
+        box-shadow: 2.5px 2.5px 2.5px 2.5px rgba(0, 0, 0, 0.664);
+        color: white;
+        border-radius: .3rem 0rem .3rem 0;
+        z-index: 1;
+    }
+    
+    .allCars .carInfo h4 {
+        margin-top: -2px;
+    }
+    
+    .info1-2 {
+        display: flex;
+        justify-content: space-between;
+        font-size: .8rem;
+        margin-top: -1rem;
+        text-align: center;
+    }
+    
+    .marque {
+        border-bottom: red 4px solid;
+        width: 8%;
+        margin-top: -25px;
+        margin-bottom: 4rem;
+    }
+    
+    .div-marque {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .louer {
+        background: rgb(218, 67, 56);
+        color: white;
+        font-size: 700;
+        text-decoration: none;
+        padding: .2rem;
+        border-radius: .2rem;
+        margin-top: -.3rem;
+    }
+    
+    .promotion {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    
+    .promotion img {
+        width: 30%;
+        height: 25%;
+    }
+    
+    .promotion p {
+        width: 50%;
+    }
+    
+    .bodyLocation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    
+    .location-div {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background: linear-gradient(rgba(13, 40, 56, 0.7), rgba(14, 41, 71, 0.575)), url('../img/Jeep_Wrangler_80th_FirecrackerRed_2p_565x330.png');
+        background-size: inherit;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 85%;
+        border-radius: .3rem;
+        flex-wrap: wrap-reverse;
+        padding: 2rem;
+    }
+    
+    .paiement {
+        background: rgba(8, 33, 48, 0.137);
+        width: 20%;
+        min-height: 68%;
+        border-radius: .4rem;
+        padding: 2rem;
+    }
+    
+    .paiement label {
+        color: white;
+        margin-top: .5rem;
+    }
+    
+    .location-div form h3 {
+        color: white;
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+    }
+    
+    .labelIput {
+        display: flex;
+        flex-direction: column;
+        margin-right: 1rem;
+    }
+    
+    .global-labelIput .labelIput label {
+        color: white;
+    }
+    
+    .global-labelIput {
+        display: flex;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+    }
+    
+    .lbi {
+        display: none;
+    }
+    
+    .bodySearch {
+        background: url(../img/2022-toyota-highlander-bronze-001-1-1622741872.jpg);
+        background-size: cover;
+        font-family: sans-serif;
+    }
+    /* ------------------------------------------------- */
+    
+    @media only screen and (max-width: 400px) {
+        body {
+            background: rgb(23, 87, 114);
+            /* overflow: hidden; */
+            height: 100vh;
+            width: 100vw;
+        }
+        .center {
+            background: none;
+            box-shadow: none;
+        }
+    }
