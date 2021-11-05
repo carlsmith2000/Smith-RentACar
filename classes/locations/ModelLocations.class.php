@@ -5,18 +5,16 @@ class ModelLocations extends Connection
      * Cette fonction Permet d'enregistrer 
      * un Locations de la table Locations
      */
-    protected function enregistrerLocations($idLocataire, $idVoiture, $dateDebut,  $heureDebut, $dateFin, $heureFin, $pays)
+    protected function enregistrerLocations($idLocataire, $idVoiture, $dateDebut, $dateFin, $pays)
     {
-        $sql = "INSERT INTO locations(id_client, id_voiture, dateDebut,  heureDebut, dateFin, heureFin, pays) VALUES(?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO locations(id_client, id_voiture, dateDebut, dateFin, pays) VALUES(?, ?, ?, ?, ?)";
         $stm = $this->getConnection()->prepare($sql);
         $stm->execute(
             [
                 $idLocataire,
                 $idVoiture,
                 $dateDebut,
-                $heureDebut,
                 $dateFin,
-                $heureFin,
                 $pays
             ]
         );

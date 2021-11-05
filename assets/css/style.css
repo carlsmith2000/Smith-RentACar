@@ -276,6 +276,7 @@
         width: 135px;
         transition: .5s;
         margin: .5rem;
+        box-sizing: border-box;
     }
     
     .btnSend {
@@ -303,6 +304,7 @@
     }
     
     .btn:hover {
+        box-sizing: border-box;
         /* background: rgba(240, 149, 29, 0.794); */
         letter-spacing: .3rem;
         transition: .5s;

@@ -12,15 +12,11 @@ $vueLocation = new VueLocations();
 
 if (isset($_POST['valider'])) {
     $dateDebutLoc = $_POST['dateDebutLoc'];
-    $heureDebutLoc = $_POST['heureDebutLoc'];
     $dateFinLoc = $_POST['dateFinLoc'];
-    $heureFinLoc = $_POST['heureFinLoc'];
     $pays = $_POST['pays'];
-    $idVoiture = $_POST['idVtr'];
+    $idVoiture = $_POST['voiture'];
     $response = $vueVoitures->researchVoitureById($idVoiture);
     $client = $vueClient->researchTenetById($_POST['noCompte']);
-    
-
 }
 if(isset($_POST['confirmer'])){
     ?>
@@ -32,9 +28,7 @@ if(isset($_POST['confirmer'])){
         $_POST['idClient'],
         $_POST['idVtr'],
         $_POST['dateDebutLoc'],
-        $_POST['heureDebutLoc'],
         $_POST['dateFinLoc'],
-        $_POST['heureFinLoc'],
         $_POST['pays']
     );
     header("location:./listeDesVoitures.php");
@@ -91,7 +85,7 @@ if(isset($_POST['confirmer'])){
 
                     <div class="labelIput">
                         <label for="dateDebutLoc">Date Debut Location</label>
-                        <input class="input input-2" type="date" name="dateDebutLoc" value="<?= $dateDebutLoc ?>" >
+                        <input class="input input-2" type="datetime-local" name="dateDebutLoc" value="<?= $dateDebutLoc ?>" >
                         <!-- disabledo -->
                     </div>
                 </div>
@@ -103,35 +97,25 @@ if(isset($_POST['confirmer'])){
                         <input class="input input-2" type="text" name="adresseClient" value="<?= $client->clientFound->adresse ?>" >
                     </div>
 
-                    <div class="labelIput">
-                        <label for="heureDebutLoc">Heure Debut Location</label>
-                        <input class="input input-2" type="time" name="heureDebutLoc" value="<?= $heureDebutLoc ?>" >
-                    </div>
-                </div>
-
-                <div class="global-labelIput">
+                   
                     <div class="labelIput">
                         <label for="mailClient">Email Client</label>
                         <input class="input input-2" type="mail" name="mailClient" value="<?= $client->clientFound->mail ?>" >
                     </div>
-
+                </div>
+                
+                <div class="global-labelIput">
                     <div class="labelIput">
                         <label for="dateFinLoc">Date Fin Location</label>
-                        <input class="input input-2" type="date" name="dateFinLoc" value="<?= $dateFinLoc ?>" >
+                        <input class="input input-2" type="datetime-local" name="dateFinLoc" value="<?= $dateFinLoc ?>" >
                     </div>
-                </div>
-
-                <div class="global-labelIput">
 
                     <div class="labelIput">
                         <label for="noCompte">Pays De Ramassage</label>
                         <input class="input input-2" type="text" name="pays" value="<?= $pays ?>" >
                     </div>
 
-                    <div class="labelIput">
-                        <label for="heureFinLoc">Heure Fin Location</label>
-                        <input class="input input-2" type="time" name="heureFinLoc" value="<?= $heureFinLoc ?>" >
-                    </div>
+                
                 </div>
 
                 <input type="hidden" name="idVtr" value="<?= $idVoiture ?> ">

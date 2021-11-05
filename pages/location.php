@@ -41,9 +41,7 @@ include_once('../autoLoad/autoLoader.php');
                     $client->clientFound->id_client,
                     $_POST['idVtr'],
                     $_POST['dateDebutLoc'],
-                    $_POST['heureDebutLoc'],
                     $_POST['dateFinLoc'],
-                    $_POST['heureFinLoc'],
                     $_POST['pays']
                 );
     ?>
@@ -60,24 +58,13 @@ include_once('../autoLoad/autoLoader.php');
                 <div class="global-labelIput">
                     <div class="labelIput">
                         <label for="dateDebutLoc">Date Debut Location</label>
-                        <input class="input" type="date" name="dateDebutLoc" required>
+                        <input class="input" type="datetime-local" name="dateDebutLoc" required>
                     </div>
 
-                    <div class="labelIput">
-                        <label for="heureDebutLoc">Heure Debut Location</label>
-                        <input class="input" type="time" name="heureDebutLoc" required>
-                    </div>
-                </div>
-
-                <div class="global-labelIput">
+                   
                     <div class="labelIput">
                         <label for="dateFinLoc">Date Fin Location</label>
-                        <input class="input" type="date" name="dateFinLoc" required>
-                    </div>
-
-                    <div class="labelIput">
-                        <label for="heureFinLoc">Date Fin Location</label>
-                        <input class="input" type="time" name="heureFinLoc" required>
+                        <input class="input" type="datetime-local" name="dateFinLoc" required>
                     </div>
                 </div>
 
