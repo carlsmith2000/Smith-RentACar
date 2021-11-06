@@ -10,6 +10,7 @@ include_once('../autoLoad/autoLoader.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style1.css">
     <title>Smith Rent a Car | Location</title>
 </head>
 
@@ -52,6 +53,22 @@ include_once('../autoLoad/autoLoader.php');
             }
         }
         ?>
+        <div class="topnav" id="myTopnav">
+            <h1 class="logo">SMITH<span class="s">'S</span> RENT CAR</h1>
+            <div>
+                <a class="" id="active" href="../index.php"> Accueil </a>
+                <a class="linkOfM" href="./listeDesVoitures.php">Liste Des Voiture</a>
+                <a class="linkOfM" href="./locationVoiture.php">Location</a>
+                <a class="linkOfM" href="./chat.php">Chat</a>
+                <a class="linkOfM" href="../Catica's Pizza/Loisir.html">Loisirs</a>
+                <a class="linkOfM" href="contact.html">Contact</a>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <img class="fa fa-bars" src="./assets/img/menu_16x16.png" alt="">
+                </a>
+            </div>
+
+        </div>
+        <script type="text/javascript" src="./assets/Js/javaScript.js"></script>
         <div class="location-div">
             <form action="ficheLocation.php" method="POST">
                 <h3>INFORMATION NECESSAIRE</h3>
@@ -61,7 +78,7 @@ include_once('../autoLoad/autoLoader.php');
                         <input class="input" type="datetime-local" name="dateDebutLoc" required>
                     </div>
 
-                   
+
                     <div class="labelIput">
                         <label for="dateFinLoc">Date Fin Location</label>
                         <input class="input" type="datetime-local" name="dateFinLoc" required>
@@ -337,7 +354,7 @@ include_once('../autoLoad/autoLoader.php');
                 <input type="hidden" name="idVtr" value="<?= $idVoiture ?> ">
                 <!-- <input type="hidden" name="idClient" value=" "> -->
                 <input class="btn" type="submit" name="valider" value="Suivant">
-                
+
             </form>
 
 
@@ -370,6 +387,8 @@ include_once('../autoLoad/autoLoader.php');
         header("location:./listeDesVoitures.php");
     }
     ?>
+
+    
 </body>
 
 </html>

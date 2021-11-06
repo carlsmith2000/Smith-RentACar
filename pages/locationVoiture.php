@@ -9,6 +9,7 @@ include_once('../autoLoad/autoLoader.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/style1.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <title>Smith Rent a Car | Location</title>
 </head>
@@ -27,31 +28,46 @@ include_once('../autoLoad/autoLoader.php');
     $vueLocation = new VueLocations();
 
     $listeLocation = $vueLocation->getAllLocation();
-        
-        if (isset($_POST['valider'])) {
 
-            $client = $vueClient->researchTenetById($_POST['noCompte']);
+    if (isset($_POST['valider'])) {
 
-            if ($client->found <= 0) {
-                // $errMsg = 'Verifier si le numero de votre Compte est Correct !';
-                header("location:./creationCompteClient.php");
-            } else {
-                $controleurLocation->enregistrerLocation(
-                    $client->clientFound->id_client,
-                    $_POST['voiture'],
-                    $_POST['dateDebutLoc'],
-                    $_POST['dateFinLoc'],
-                    $_POST['pays']
-                );
+        $client = $vueClient->researchTenetById($_POST['noCompte']);
+
+        if ($client->found <= 0) {
+            // $errMsg = 'Verifier si le numero de votre Compte est Correct !';
+            header("location:./creationCompteClient.php");
+        } else {
+            $controleurLocation->enregistrerLocation(
+                $client->clientFound->id_client,
+                $_POST['voiture'],
+                $_POST['dateDebutLoc'],
+                $_POST['dateFinLoc'],
+                $_POST['pays']
+            );
     ?>
-                <!-- <script>
+            <!-- <script>
                     alert("Location fait avec succès !");
                 </script> -->
     <?php
-            }
+        }
     }
 
     ?>
+    <div class="topnav" id="myTopnav">
+        <h1 class="logo">SMITH<span class="s">'S</span> RENT CAR</h1>
+        <div>
+            <a class="" id="active" href="../index.php"> Accueil </a>
+            <a class="linkOfM" href="./listeDesVoitures.php">Liste Des Voiture</a>
+            <a class="linkOfM" href="./locationVoiture.php">Location</a>
+            <a class="linkOfM" href="./chat.php">Chat</a>
+            <a class="linkOfM" href="contact.html">Contact</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <img class="fa fa-bars" src="./assets/img/menu_16x16.png" alt="">
+            </a>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="./assets/Js/javaScript.js"></script>
     <div class="location-div">
         <form action="ficheLocation.php" method="POST">
             <h3>RENT A CAR</h3>
@@ -362,9 +378,9 @@ include_once('../autoLoad/autoLoader.php');
             // document.forms['moteurRecherche'].submit();
             $idVoiture = $_POST['voiture'];
             $response = $vueVoitures->researchVoitureById($idVoiture);
-        
+
         ?>
-        <div class="allCars" style="margin-top: 5rem;">
+            <div class="allCars" style="margin-top: 5rem;">
                 <div class="carInfo">
                     <p class="prix"><?= $response->voiture->prix ?> $ / j</p>
                     <img src="../assets/img/<?= $response->voiture->img ?>" alt="">
@@ -387,11 +403,14 @@ include_once('../autoLoad/autoLoader.php');
                     </div>
                 </div>
             </div>
-        </div>
-        <?php
+    </div>
+<?php
         }
-       
-        ?>
+
+?>
+
+
+
 </body>
 
 </html>
