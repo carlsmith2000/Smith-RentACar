@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2021 at 01:03 PM
+-- Generation Time: Nov 08, 2021 at 01:29 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -61,25 +61,36 @@ CREATE TABLE `locations` (
   `id` int(11) NOT NULL,
   `id_client` int(11) NOT NULL,
   `id_voiture` int(11) NOT NULL,
-  `dateDebut` date NOT NULL,
-  `dateFin` date NOT NULL,
-  `heureDebut` time NOT NULL,
-  `heureFin` time NOT NULL,
-  `pays` varchar(250) NOT NULL
+  `dateDebut` datetime NOT NULL,
+  `dateFin` datetime NOT NULL,
+  `pays` varchar(250) NOT NULL,
+  `montantTotal` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `locations`
 --
 
-INSERT INTO `locations` (`id`, `id_client`, `id_voiture`, `dateDebut`, `dateFin`, `heureDebut`, `heureFin`, `pays`) VALUES
-(34, 1, 15, '2021-11-19', '2021-11-19', '01:01:00', '02:57:00', 'Haiti'),
-(35, 1, 15, '2021-11-19', '2021-11-19', '01:01:00', '02:57:00', 'Haiti'),
-(36, 1, 15, '2021-11-19', '2021-11-19', '01:01:00', '02:57:00', 'Haiti'),
-(37, 5, 19, '2021-11-09', '2021-11-24', '06:10:00', '02:14:00', 'Haiti'),
-(38, 5, 19, '2021-11-09', '2021-11-24', '06:10:00', '02:14:00', 'Haiti'),
-(39, 9, 8, '2021-11-17', '2021-11-19', '05:11:00', '05:11:00', 'Bahamas'),
-(40, 1, 1, '2021-11-11', '2021-12-01', '07:17:00', '04:17:00', 'Haiti');
+INSERT INTO `locations` (`id`, `id_client`, `id_voiture`, `dateDebut`, `dateFin`, `pays`, `montantTotal`) VALUES
+(34, 1, 15, '2021-11-19 00:00:00', '2021-11-19 00:00:00', 'Haiti', 0),
+(35, 1, 15, '2021-11-19 00:00:00', '2021-11-19 00:00:00', 'Haiti', 0),
+(36, 1, 15, '2021-11-19 00:00:00', '2021-11-19 00:00:00', 'Haiti', 0),
+(37, 5, 19, '2021-11-09 00:00:00', '2021-11-24 00:00:00', 'Haiti', 0),
+(38, 5, 19, '2021-11-09 00:00:00', '2021-11-24 00:00:00', 'Haiti', 0),
+(39, 9, 8, '2021-11-17 00:00:00', '2021-11-19 00:00:00', 'Bahamas', 0),
+(40, 1, 1, '2021-11-11 00:00:00', '2021-12-01 00:00:00', 'Haiti', 0),
+(41, 5, 13, '2021-11-10 06:16:00', '2021-11-14 03:16:00', 'Argentine', 0),
+(42, 5, 18, '2021-11-08 03:35:00', '2021-11-25 03:35:00', 'Barbade', 0),
+(43, 5, 19, '2021-11-02 04:16:00', '2021-11-14 16:19:00', 'Autriche', 0),
+(44, 5, 17, '2021-11-08 01:07:00', '2021-11-09 01:07:00', 'Haiti', 0),
+(45, 5, 5, '2021-11-16 02:58:00', '2021-11-17 02:58:00', 'Haiti', 0),
+(46, 5, 17, '2021-11-16 02:59:00', '2021-11-17 02:59:00', 'Autriche', 0),
+(47, 5, 5, '2021-11-16 03:02:00', '2021-11-26 03:02:00', 'Haiti', 0),
+(48, 5, 8, '2021-11-07 03:10:00', '2021-11-10 03:10:00', 'Barbade', 0),
+(49, 5, 18, '2021-11-25 03:13:00', '2021-11-25 03:13:00', 'Bahamas', 0),
+(50, 5, 6, '2021-11-17 07:42:00', '2021-11-09 07:42:00', 'Bahamas', 5360),
+(51, 5, 17, '2021-11-10 16:48:00', '2021-11-03 16:48:00', 'Haiti', 1540),
+(52, 5, 19, '2021-11-10 06:15:00', '2021-11-11 06:16:00', 'Barbade', 800);
 
 -- --------------------------------------------------------
 
@@ -100,27 +111,45 @@ CREATE TABLE `message` (
 --
 
 INSERT INTO `message` (`id`, `id_utilisateurs`, `message`, `dateDenvoi`, `heureDenvoi`) VALUES
-(1, 5, 'kyugo8o9', '2021-10-25', '12:10:40'),
-(2, 5, 'Bonjour', '2021-10-25', '03:43:10'),
-(3, 5, 'Komanw ye', '2021-10-25', '03:43:33'),
-(4, 5, 'Komanw ye', '2021-10-25', '03:44:51'),
-(5, 8, 'apa nou nap frap', '2021-10-25', '03:45:21'),
-(6, 5, 'Komanw ye', '2021-10-25', '03:45:40'),
-(7, 5, 'sak regle men\r\n', '2021-10-25', '03:46:01'),
-(8, 8, 'apa nou nap frap', '2021-10-25', '03:46:24'),
-(9, 8, 'Nap gad sann k f\r\n', '2021-10-25', '03:46:57'),
-(10, 5, 'sak regle men\r\n', '2021-10-25', '03:47:21'),
-(11, 8, 'Dim non koman madan\'m ou ye', '2021-10-25', '03:47:53'),
-(12, 5, 'sak regle men\r\n', '2021-10-25', '03:48:13'),
-(13, 4, 'bonjour\r\n', '2021-10-28', '07:36:13'),
-(14, 4, 'wanfom', '2021-10-28', '07:36:26'),
-(15, 4, 'yo', '2021-10-30', '07:25:26'),
-(16, 4, 'Sak gen la', '2021-10-30', '07:27:00'),
-(17, 8, 'baz', '2021-10-30', '07:27:49'),
-(18, 8, 'baz', '2021-10-30', '07:28:43'),
-(19, 4, 'yoooooooooooooooooooooooooooooo', '2021-11-01', '03:14:46'),
-(20, 8, 'sakhdsjbcjkdshk', '2021-11-01', '03:15:14'),
-(21, 8, 'sakhdsjbcjkdshk', '2021-11-01', '03:15:38');
+(40, 4, 'Baz', '2021-11-07', '07:58:53'),
+(41, 4, 'Sak gen la', '2021-11-07', '07:59:07'),
+(42, 8, 'poze wi man, sak regle', '2021-11-07', '08:00:05'),
+(43, 4, 'Sak gen la', '2021-11-07', '08:00:20'),
+(44, 8, 'M diw manfom', '2021-11-07', '08:00:48'),
+(45, 4, 'jnnn', '2021-11-07', '08:20:17'),
+(46, 4, 'jnnn', '2021-11-07', '08:20:47'),
+(47, 4, 'jnnn', '2021-11-07', '08:21:33'),
+(48, 4, 'jnnn', '2021-11-07', '08:21:55'),
+(49, 4, 'jnnn', '2021-11-07', '08:22:11'),
+(50, 4, 'jnnn', '2021-11-07', '08:22:38'),
+(51, 4, 'jnnn', '2021-11-07', '08:23:34'),
+(52, 4, 'jnnn', '2021-11-07', '08:23:47'),
+(53, 4, 'jnnn', '2021-11-07', '08:34:25'),
+(54, 4, 'jnnn', '2021-11-07', '08:35:06'),
+(55, 4, 'jnnn', '2021-11-07', '08:36:09'),
+(56, 4, 'jnnn', '2021-11-07', '08:37:48'),
+(57, 4, 'baz', '2021-11-07', '08:38:16'),
+(58, 4, 'baz', '2021-11-07', '08:38:55'),
+(59, 4, 'baz', '2021-11-07', '08:39:14'),
+(60, 4, 'baz', '2021-11-07', '08:39:28'),
+(61, 4, 'baz', '2021-11-07', '08:39:42'),
+(62, 4, 'baz', '2021-11-07', '08:40:19'),
+(63, 4, 'baz', '2021-11-07', '08:41:09'),
+(64, 4, 'baz', '2021-11-07', '08:42:02'),
+(65, 4, 'baz', '2021-11-07', '08:42:41'),
+(66, 4, 'baz', '2021-11-07', '08:43:08'),
+(67, 4, 'baz', '2021-11-07', '08:43:46'),
+(68, 4, 'baz', '2021-11-07', '08:48:10'),
+(69, 79, 'Bonsoir tout moun', '2021-11-07', '09:53:40'),
+(70, 82, 'Mwen rantre wi', '2021-11-08', '05:11:57'),
+(71, 82, 'Mwen rantre wi', '2021-11-08', '05:12:33'),
+(72, 82, 'Mwen rantre wi', '2021-11-08', '05:13:07'),
+(73, 82, 'Mwen rantre wi', '2021-11-08', '05:13:29'),
+(74, 82, 'Mwen rantre wi', '2021-11-08', '05:14:08'),
+(75, 82, 'Mwen rantre wi', '2021-11-08', '05:14:46'),
+(76, 82, 'Mwen rantre wi', '2021-11-08', '05:15:28'),
+(77, 82, 'Mwen rantre wi', '2021-11-08', '05:16:22'),
+(78, 82, 'Mwen rantre wi', '2021-11-08', '05:16:37');
 
 -- --------------------------------------------------------
 
@@ -140,9 +169,9 @@ CREATE TABLE `utilisateurs` (
 --
 
 INSERT INTO `utilisateurs` (`id_utilisateur`, `pseudo`, `statut`, `password`) VALUES
-(4, 'Smith', 0, 'smith123'),
+(4, 'Smith', 1, 'smith123'),
 (5, 'Djeby', 0, 'j1235'),
-(8, 'Wenchy', 1, 'wpc1234'),
+(8, 'Wenchy', 0, 'wpc1234'),
 (9, 'Tyson', 0, 'ty2020'),
 (11, 'TOTO', 0, '12345'),
 (12, 'Nina', 0, '123'),
@@ -153,7 +182,12 @@ INSERT INTO `utilisateurs` (`id_utilisateur`, `pseudo`, `statut`, `password`) VA
 (17, 'Mama', 0, '1222'),
 (18, 'Lima', 0, '0101'),
 (19, 'Lissanne', 0, '2020'),
-(20, 'Nidia', 0, '2019');
+(20, 'Nidia', 0, '2019'),
+(79, 'GanBass', 0, '1234'),
+(81, 'Vanel', 0, '00'),
+(82, 'Stephane', 1, 'carl1234'),
+(83, 'true', 0, 'true1234'),
+(84, 'Alin', 0, '1111');
 
 -- --------------------------------------------------------
 
@@ -256,19 +290,19 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `voitures`
