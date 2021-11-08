@@ -10,23 +10,42 @@ include_once('../autoLoad/autoLoader.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style1.css">
+    <link rel="stylesheet" href="../assets/css/styleContact.css">
     <title>Seach Car</title>
 </head>
 <?php
 $vuevoitures = new VueVoitures();
-if (isset($_POST['search'])) {
+if (!isset($_POST['search'])) {
+    $outPut = "";
+    echo  $outPut;
+} else {
     $carFounds = $vuevoitures->researchVoituresByModels($_POST['searchModel']);
-}
-else{
-    // header("url=rechercherVoiture.php");
 }
 ?>
 
 <body class="bodySearch">
+<div class="topnav" id="myTopnav">
+        <h1 class="logo">SMITH<span class="s">'S</span> RENT CAR</h1>
+        <div class="g">
+            <a class="" id="active" href="../index.php"> Accueil </a>
+            <a class="linkOfM" href="./listeDesVoitures.php">Liste Des Voiture</a>
+            <a class="linkOfM" href="./locationVoiture.php">Location</a>
+            <a class="linkOfM" href="./rechercherVoiture.php">Rechercher</a>
+            <a class="linkOfM" href="./chat.php">Chat</a>
+            <a class="linkOfM" href="">Loisirs</a>
+            <a class="linkOfM" href="./contact.php">Contact</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <img class="fa fa-bars" src="../assets/img/menu_16x16.png" alt="">
+            </a>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../assets/Js/javaScript.js"></script>
     <div class="bannerSearch">
         <h2>Seach Car</h2>
         <form action="./rechercherVoiture.php" method="POST">
-            <input type="search" class="searchModel" name="searchModel" placeholder="Seach Car by Model">
+            <input type="search" class="searchModel" name="searchModel" placeholder="Seach Car by Model or Mark">
             <input type="submit" class="search" name="search" value="Search">
         </form>
     </div>

@@ -18,6 +18,11 @@ if (isset($_POST['valider'])) {
     $response = $vueVoitures->researchVoitureById($idVoiture);
     $client = $vueClient->researchTenetById($_POST['noCompte']);
 }
+
+
+// echo $montantT;
+$date = date_diff( new DateTime($dateDebutLoc), new DateTime($dateFinLoc));
+$montantT = $date->days * $response->voiture->prix;
 if(isset($_POST['confirmer'])){
     ?>
         <script>
@@ -29,7 +34,8 @@ if(isset($_POST['confirmer'])){
         $_POST['idVtr'],
         $_POST['dateDebutLoc'],
         $_POST['dateFinLoc'],
-        $_POST['pays']
+        $_POST['pays'],
+        $_POST['montantT']
     );
     header("location:./listeDesVoitures.php");
 }
@@ -42,10 +48,30 @@ if(isset($_POST['confirmer'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <title>Smith Rent | Fiche Location</title>
+    <link rel="stylesheet" href="../assets/css/style1.css">
+    <!-- <link rel="stylesheet" href="../assets/css/styleContact.css"> -->
 </head>
 
 <body class="bodyLocation">
+
+<div class="topnav" id="myTopnav">
+        <h1 class="logo">SMITH<span class="s">'S</span> RENT CAR</h1>
+        <div>
+            <a class="" id="active" href="./index.php"> Accueil </a>
+            <a class="linkOfM" href="./pages/listeDesVoitures.php">Liste Des Voiture</a>
+            <a class="linkOfM" href="./pages/locationVoiture.php">Location</a>
+            <a class="linkOfM" href="./pages/rechercherVoiture.php">Rechercher</a>
+            <a class="linkOfM" href="./pages/chat.php">Chat</a>
+            <a class="linkOfM" href="">Loisirs</a>
+            <a class="linkOfM" href="./pages/contact.php">Contact</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <img class="fa fa-bars" src="./assets/img/menu_16x16.png" alt="">
+            </a>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="./assets/Js/javaScript.js"></script>
+
     <div class="location-div">
 
         <div class="allCars" style="margin-top: 5rem;">
@@ -80,12 +106,12 @@ if(isset($_POST['confirmer'])){
                 <div class="global-labelIput">
                     <div class="labelIput">
                         <label for="nomClient">Nom Complet Client</label>
-                        <input class="input input-2" type="text" name="nomClient" value="<?= $client->clientFound->nomComplet ?>" >
+                        <input class="input input-2" type="text" name="nomClient" value="<?= $client->clientFound->nomComplet ?>" readonly>
                     </div>
 
                     <div class="labelIput">
                         <label for="dateDebutLoc">Date Debut Location</label>
-                        <input class="input input-2" type="datetime-local" name="dateDebutLoc" value="<?= $dateDebutLoc ?>" >
+                        <input class="input input-2" type="datetime-local" name="dateDebutLoc" value="<?= $dateDebutLoc ?>" readonly>
                         <!-- disabledo -->
                     </div>
                 </div>
@@ -94,56 +120,36 @@ if(isset($_POST['confirmer'])){
                 <div class="global-labelIput">
                     <div class="labelIput">
                         <label for="adresseClient">Adresse Client</label>
-                        <input class="input input-2" type="text" name="adresseClient" value="<?= $client->clientFound->adresse ?>" >
+                        <input class="input input-2" type="text" name="adresseClient" value="<?= $client->clientFound->adresse ?>" readonly>
                     </div>
 
                    
                     <div class="labelIput">
                         <label for="mailClient">Email Client</label>
-                        <input class="input input-2" type="mail" name="mailClient" value="<?= $client->clientFound->mail ?>" >
+                        <input class="input input-2" type="mail" name="mailClient" value="<?= $client->clientFound->mail ?>" readonly>
                     </div>
                 </div>
                 
                 <div class="global-labelIput">
                     <div class="labelIput">
                         <label for="dateFinLoc">Date Fin Location</label>
-                        <input class="input input-2" type="datetime-local" name="dateFinLoc" value="<?= $dateFinLoc ?>" >
+                        <input class="input input-2" type="datetime-local" name="dateFinLoc" value="<?= $dateFinLoc ?>" readonly>
                     </div>
 
                     <div class="labelIput">
                         <label for="noCompte">Pays De Ramassage</label>
-                        <input class="input input-2" type="text" name="pays" value="<?= $pays ?>" >
+                        <input class="input input-2" type="text" name="pays" value="<?= $pays ?>" readonly>
                     </div>
 
                 
                 </div>
 
+                <input type="hidden" name="montantT" value="<?= $montantT ?> ">
                 <input type="hidden" name="idVtr" value="<?= $idVoiture ?> ">
-                <input type="hidden" name="idClient" value="<?= $client->clientFound->id_client ?> ">
+                <input type="hidden" name="idClient" value="<?= $client->clientFound->id_client ?> " readonly>
                 <input class="btn" type="submit" name="confirmer" value="Valider">
             </form>
         </div>
-
-        <script>
-            function chageTypeInput() {
-                var modePaiement = document.getElementById("modePaiement").value;
-                if (modePaiement == 0) {
-                    document.getElementById("moncash").classList.add("lbi");
-                    document.getElementById("carte").classList.remove("lbi");
-
-                    // document.getElementById("noCarte").add();
-                    // document.getElementById("noCarteL").add();
-                }
-                else if (modePaiement == 1){
-                    document.getElementById("moncash").classList.remove("lbi");
-                    document.getElementById("carte").classList.add("lbi");
-                    // document.getElementById("noCarteL").remove();
-
-                    // document.getElementById("noCarte").add();
-                    // document.getElementById("noCarteL").add();
-                } 
-            }
-        </script>
 
         <div class="paiement">
             <h3 style="color: white;">Mode Paiement</h3>
@@ -162,9 +168,15 @@ if(isset($_POST['confirmer'])){
                 <input id="noCarte" class="input" type="number" name="numeroCarte" required>
             </div>
 
+
             <div class="labelIput" id="moncash">
                 <label for="numeroCarte" id="noMonCashL">numero Téléphone Mon Cash</label>
                 <input id="noMonCash" class="input" type="number" name="numeroCarte" required>
+            </div>
+
+            <div class="labelIput" id="motantTotal">
+                <label for="numeroCarte" id="noCarteL">Motant Total a Payer</label>
+                <input id="noCarte" class="input" type="text" name="motantTotal" value="<?= $montantT ?> $" readonly>
             </div>
         </div>
     </div>

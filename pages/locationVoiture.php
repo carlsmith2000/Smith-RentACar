@@ -37,12 +37,16 @@ include_once('../autoLoad/autoLoader.php');
             // $errMsg = 'Verifier si le numero de votre Compte est Correct !';
             header("location:./creationCompteClient.php");
         } else {
+            $date = date_diff(new DateTime( $_POST['dateDebutLoc']), new DateTime( $_POST['dateFinLoc']));
+            $montantT = $date->days * $response->voiture->prix;
+
             $controleurLocation->enregistrerLocation(
                 $client->clientFound->id_client,
                 $_POST['voiture'],
                 $_POST['dateDebutLoc'],
                 $_POST['dateFinLoc'],
-                $_POST['pays']
+                $_POST['pays'],
+                $_POST['montantT']
             );
     ?>
             <!-- <script>
@@ -59,15 +63,16 @@ include_once('../autoLoad/autoLoader.php');
             <a class="" id="active" href="../index.php"> Accueil </a>
             <a class="linkOfM" href="./listeDesVoitures.php">Liste Des Voiture</a>
             <a class="linkOfM" href="./locationVoiture.php">Location</a>
+            <a class="linkOfM" href="./rechercherVoiture.php">Rechercher</a>
             <a class="linkOfM" href="./chat.php">Chat</a>
-            <a class="linkOfM" href="contact.html">Contact</a>
+            <a class="linkOfM" href="./contact.php">Contact</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <img class="fa fa-bars" src="./assets/img/menu_16x16.png" alt="">
             </a>
         </div>
 
     </div>
-    <script type="text/javascript" src="./assets/Js/javaScript.js"></script>
+    <script type="text/javascript" src="../assets/Js/javaScript.js"></script>
     <div class="location-div">
         <form action="ficheLocation.php" method="POST">
             <h3>RENT A CAR</h3>
@@ -366,10 +371,9 @@ include_once('../autoLoad/autoLoader.php');
                     </select>
                 </div>
             </div>
-            <!-- <input type="hidden" name="idVtr" value=" "> -->
+            <input type="hidden" name="montantT" value="<?=$montantT?> ">
             <!-- <input type="hidden" name="idClient" value=" "> -->
-            <input class="btn" type="submit" name="valider vld" value="Suivant">
-            <input class="btn" type="submit" name="afficher" value="Voir La voiture">
+            <input class="btn" type="submit" name="valider" value="Suivant">
 
         </form>
 

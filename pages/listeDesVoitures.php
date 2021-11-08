@@ -36,9 +36,10 @@ $Fiats = $vuevoitures->researchVoituresByMarques('Fiat')->voiture;
             <a class="" id="active" href="../index.php"> Accueil </a>
             <a class="linkOfM" href="./listeDesVoitures.php">Liste Des Voiture</a>
             <a class="linkOfM" href="./locationVoiture.php">Location</a>
+            <a class="linkOfM" href="./rechercherVoiture.php">Rechercher</a>
             <a class="linkOfM" href="./chat.php">Chat</a>
             <a class="linkOfM" href="">Loisirs</a>
-            <a class="linkOfM" href="contact.html">Contact</a>
+            <a class="linkOfM" href="./contact.php">Contact</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <img class="fa fa-bars" src="../assets/img/menu_16x16.png" alt="">
             </a>
@@ -287,10 +288,10 @@ $Fiats = $vuevoitures->researchVoituresByMarques('Fiat')->voiture;
                 <div class="prod">
                     <h3>Produits</h3>
                     <ul>
-                        <li><a href="">Pizza Margherita</a></li>
-                        <li><a href="">Pizza Reine</a></li>
-                        <li><a href="">Pizza Napolitaine</a></li>
-                        <li><a href="">Pizza Capricciosa.</a></li>
+                        <li><a href="">Toyota</a></li>
+                        <li><a href="">Fiat</a></li>
+                        <li><a href="">Nissan</a></li>
+                        <li><a href="">Ford</a></li>
                     </ul>
                 </div>
 
@@ -298,9 +299,9 @@ $Fiats = $vuevoitures->researchVoituresByMarques('Fiat')->voiture;
                     <h3>Service</h3>
                     <ul>
                         <li><a href="">Livraison</a></li>
-                        <li><a href="">Reception</a></li>
-                        <li><a href="">Preparation</a></li>
-                        <li><a href="">Decoration</a></li>
+                        <li><a href="">Chauffeur</a></li>
+                        <li><a href="">Garde du corps</a></li>
+                        <li><a href="">Reparation</a></li>
                     </ul>
                 </div>
 

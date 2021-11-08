@@ -22,7 +22,7 @@ class ModelUtilisateurs extends Connection
      */
     protected function getAllUtilisateurs()
     {
-        $sql = "SELECT id_utilisateur, pseudo, statut FROM utilisateurs";
+        $sql = "SELECT id_utilisateur, pseudo, statut FROM utilisateurs ORDER BY statut DESC, pseudo";
         $stm = $this->getConnection()->prepare($sql);
         $stm->execute();
         return $stm->fetchAll();

@@ -73,11 +73,11 @@ class ModelVoitures extends Connection
      * Cette fonction Permet de rechercher et recuperer les Voitures
      * de meme Model.
      */
-    protected function researchVoituresByModel($model)
+    protected function researchVoituresByModel($Textsearch)
     {
-        $sql = "SELECT * FROM voitures WHERE model = ? ";
+        $sql = "SELECT * FROM voitures WHERE model LIKE '%{$Textsearch}%' OR  marque LIKE'%{$Textsearch}%' ";
         $stm = $this->getConnection()->prepare($sql);
-        $stm->execute([$model]);
+        $stm->execute([]);
         return [
             "voiture" => $stm->fetchAll(),
             "carFound" => $stm->rowCount()

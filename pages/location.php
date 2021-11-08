@@ -38,18 +38,8 @@ include_once('../autoLoad/autoLoader.php');
                 // $errMsg = 'Verifier si le numero de votre Compte est Correct !';
                 header("location:./creationCompteClient.php");
             } else {
-                $controleurLocation->enregistrerLocation(
-                    $client->clientFound->id_client,
-                    $_POST['idVtr'],
-                    $_POST['dateDebutLoc'],
-                    $_POST['dateFinLoc'],
-                    $_POST['pays']
-                );
-    ?>
-                <script>
-                    alert("Location fait avec succès !");
-                </script>
-        <?php
+
+                header('location:./ficheLocation.php');
             }
         }
         ?>
@@ -60,8 +50,8 @@ include_once('../autoLoad/autoLoader.php');
                 <a class="linkOfM" href="./listeDesVoitures.php">Liste Des Voiture</a>
                 <a class="linkOfM" href="./locationVoiture.php">Location</a>
                 <a class="linkOfM" href="./chat.php">Chat</a>
-                <a class="linkOfM" href="../Catica's Pizza/Loisir.html">Loisirs</a>
-                <a class="linkOfM" href="contact.html">Contact</a>
+                <a class="linkOfM" href="">Loisirs</a>
+                <a class="linkOfM" href="./contact.php">Contact</a>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <img class="fa fa-bars" src="./assets/img/menu_16x16.png" alt="">
                 </a>
@@ -351,8 +341,7 @@ include_once('../autoLoad/autoLoader.php');
                         <input class="input" type="number" name="noCompte" placeholder="Entrer le No Compte Client" required>
                     </div>
                 </div>
-                <input type="hidden" name="idVtr" value="<?= $idVoiture ?> ">
-                <!-- <input type="hidden" name="idClient" value=" "> -->
+                <input type="hidden" name="voiture" value="<?= $idVoiture ?> ">
                 <input class="btn" type="submit" name="valider" value="Suivant">
 
             </form>
@@ -388,7 +377,7 @@ include_once('../autoLoad/autoLoader.php');
     }
     ?>
 
-    
+
 </body>
 
 </html>
