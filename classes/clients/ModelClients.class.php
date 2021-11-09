@@ -26,7 +26,7 @@ class ModelClients extends Connection
 
     /** 
      * Cette fonction Permet de recuperer toutes 
-     * les voitures de la table clients
+     * les client de la table clients
      */
     protected function getAllTenants()
     {
@@ -35,7 +35,16 @@ class ModelClients extends Connection
         $stm->execute();
         return $stm->fetchAll();
     }
-
+    
+   /** 
+     * Cette fonction Permet de retourner le dernier id de la table client
+     */
+    protected function maxId(){
+        $sql = "SELECT max(id_client) as maxId FROM clients";
+        $stm = $this->getConnection()->prepare($sql);
+        $stm->execute([]);
+        return ["maxId"=>$stm->fetch()];
+    }
     /** 
      * Cette fonction Permet de rechercher et recuperer un Locataire  
      */
@@ -49,6 +58,8 @@ class ModelClients extends Connection
             'clientFound'=>$stm->fetch()
         ];
     }
+
+
 
     /** 
      * Cette fonction Permet de supprimer un Locataire  

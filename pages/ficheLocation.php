@@ -15,20 +15,23 @@ if (isset($_POST['valider'])) {
     $dateFinLoc = $_POST['dateFinLoc'];
     $pays = $_POST['pays'];
     $idVoiture = $_POST['voiture'];
-    $response = $vueVoitures->researchVoitureById($idVoiture);
+    $response = $vueVoitures->researchVoitureById($idVoiture)->voiture;
     $client = $vueClient->researchTenetById($_POST['noCompte']);
+    if($client->found <=0){
+        header("location:./creationCompteClient.php");
+    }
 }
 
 
 // echo $montantT;
-$date = date_diff( new DateTime($dateDebutLoc), new DateTime($dateFinLoc));
-$montantT = $date->days * $response->voiture->prix;
-if(isset($_POST['confirmer'])){
-    ?>
-        <script>
-            alert("Location fait avec succès");
-        </script>
-    <?php
+$date = date_diff(new DateTime($dateDebutLoc), new DateTime($dateFinLoc));
+$montantT = $date->days * $response->prix;
+if (isset($_POST['confirmer'])) {
+?>
+    <script>
+        alert("Location fait avec succès");
+    </script>
+<?php
     $controleurLocation->enregistrerLocation(
         $_POST['idClient'],
         $_POST['idVtr'],
@@ -37,6 +40,7 @@ if(isset($_POST['confirmer'])){
         $_POST['pays'],
         $_POST['montantT']
     );
+    $controleurVoitures->updateVoitureLouerById($_POST['idVtr'], 0);
     header("location:./listeDesVoitures.php");
 }
 ?>
@@ -49,12 +53,12 @@ if(isset($_POST['confirmer'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/style1.css">
-    <!-- <link rel="stylesheet" href="../assets/css/styleContact.css"> -->
+    <link rel="stylesheet" href="../assets/css/styleListeVoiture.css">
 </head>
 
 <body class="bodyLocation">
 
-<div class="topnav" id="myTopnav">
+    <div class="topnav" id="myTopnav">
         <h1 class="logo">SMITH<span class="s">'S</span> RENT CAR</h1>
         <div>
             <a class="" id="active" href="./index.php"> Accueil </a>
@@ -70,34 +74,34 @@ if(isset($_POST['confirmer'])){
         </div>
 
     </div>
-    <script type="text/javascript" src="./assets/Js/javaScript.js"></script>
+    <script type="text/javascript" src="../assets/Js/javaScript.js"></script>
 
     <div class="location-div">
+        <div class="container">
+            <div class="product-card">
+                <div class="product-img img-one">
+                    <img style="width: 100%; height: 100%;" src="../assets/img/<?= $response->img ?>" alt="">
+                </div>
+                <div class="product-text">
+                    <h3><?= $response->marque ?> | <?= $response->model ?></h3>
+                    <div class="info">
+                        <p>
+                            <!-- Model : <strong><?= $response->model ?></strong><br> -->
+                            Année : <strong><?= $response->annee ?></strong><br>
+                            Carburant : <strong><?= $response->essence ?></strong><br>
+                            Vitesse : <strong><?= $response->vitesse ?></strong><br>
+                        </p>
+                        <p>
+                            Transmition : <strong><?= $response->transmition ?></strong><br>
+                            Siège : <strong><?= $response->nombreSiege ?></strong><br>
+                            Porte : <strong><?= $response->nombrePorte ?></strong><br>
+                            Charge : <strong><?= $response->nbMalette ?></strong><br>
 
-        <div class="allCars" style="margin-top: 5rem;">
-            <div class="carInfo">
-                <p class="prix"><?= $response->voiture->prix ?> $ / j</p>
-                <img src="../assets/img/<?= $response->voiture->img ?>" alt="">
-                <h4><?= $response->voiture->marque ?></h4>
-
-                <div class="info1-2">
-                    <div class="info1">
-                        <p>Model : <?= $response->voiture->model ?></p>
-                        <p>Année : <?= $response->voiture->annee ?></p>
-                        <p>Carburant : <?= $response->voiture->essence ?></p>
-                        <p>Vitesse : <?= $response->voiture->vitesse ?></p>
-                    </div>
-
-                    <div class="info2">
-                        <p>Siège : <?= $response->voiture->nombreSiege ?></p>
-                        <p>Transmition : <?= $response->voiture->transmition ?></p>
-                        <p>Porte : <?= $response->voiture->nombrePorte ?></p>
-                        <p>Charge : <?= $response->voiture->nbMalette ?></p>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-
 
         <div>
 
@@ -123,13 +127,13 @@ if(isset($_POST['confirmer'])){
                         <input class="input input-2" type="text" name="adresseClient" value="<?= $client->clientFound->adresse ?>" readonly>
                     </div>
 
-                   
+
                     <div class="labelIput">
                         <label for="mailClient">Email Client</label>
                         <input class="input input-2" type="mail" name="mailClient" value="<?= $client->clientFound->mail ?>" readonly>
                     </div>
                 </div>
-                
+
                 <div class="global-labelIput">
                     <div class="labelIput">
                         <label for="dateFinLoc">Date Fin Location</label>
@@ -141,7 +145,7 @@ if(isset($_POST['confirmer'])){
                         <input class="input input-2" type="text" name="pays" value="<?= $pays ?>" readonly>
                     </div>
 
-                
+
                 </div>
 
                 <input type="hidden" name="montantT" value="<?= $montantT ?> ">

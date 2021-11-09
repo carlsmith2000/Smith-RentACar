@@ -8,5 +8,8 @@
         public function researchTenetById($id){
             return (object)$this->researchTenetsById($id);
         }
+        public function maxIdClient(){
+            return (object)$this->maxId();
+        }
     }
 ?>

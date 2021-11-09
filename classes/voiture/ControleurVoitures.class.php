@@ -15,4 +15,8 @@ class ControleurVoitures extends ModelVoitures
     {
         $this->updateVoituresById($id, $imm, $marque, $model, $annee, $transmition, $essence, $modeFonct, $prix, $couleur, $vitesse, $disponibilite, $nombrePorte, $nombreSiege);
     }
+
+    public function updateVoitureLouerById($id, $value){
+        $this->updateVoituresLouerById($id, $value);
+    }
 }

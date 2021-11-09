@@ -137,4 +137,10 @@ class ModelVoitures extends Connection
             ]
         );
     }
+
+    protected function updateVoituresLouerById($id, $value){
+        $sql = "UPDATE voitures set disponibilite = ? WHERE id = ?";
+        $stm = $this->getConnection()->prepare($sql);
+        $stm->execute([$value, $id]);
+    }
 }

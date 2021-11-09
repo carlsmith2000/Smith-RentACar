@@ -1,6 +1,6 @@
 <?php
 include_once('../autoLoad/autoLoader.php');
-// session_start();
+
 $vuevoitures = new VueVoitures();
 $allVoiture =  $vuevoitures->getAllVoiture();
 
@@ -9,24 +9,19 @@ $Jepps = $vuevoitures->researchVoituresByMarques('Jepp')->voiture;
 $Infinitis = $vuevoitures->researchVoituresByMarques('Infiniti')->voiture;
 $Fords = $vuevoitures->researchVoituresByMarques('Ford')->voiture;
 $Fiats = $vuevoitures->researchVoituresByMarques('Fiat')->voiture;
-// echo '<pre>'; 
-// print_r($Infinitis);
-
-
+$btnStatus = '';
 ?>
-
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/styleListeVoiture.css">
     <link rel="stylesheet" href="../assets/css/style1.css">
-    <script src="https://kit.fontawesome.com/45e38e596f.js" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="../assets/css/styleContact.css"> -->
-    <title>SMITH RENT | CARS</title>
+    <title>Document</title>
 </head>
 
 <body>
@@ -44,303 +39,312 @@ $Fiats = $vuevoitures->researchVoituresByMarques('Fiat')->voiture;
                 <img class="fa fa-bars" src="../assets/img/menu_16x16.png" alt="">
             </a>
         </div>
-
     </div>
     <script type="text/javascript" src="../assets/Js/javaScript.js"></script>
 
-    <div>
-        <div class="banner">
-            <h1>LISTE DES VOITURES</h1>
-        </div>
-        <div>
-            <h1 class="marqueVoiture">RANG OVER</h1>
-            <div class="div-marque">
-                <div class="marque"></div>
-            </div>
-            <div class="allCars">
-                <?php
-                foreach ($range_overs as $range_over) {
-                ?>
-                    <div class="carInfo">
-                        <p class="prix"><?= $range_over->prix ?> $</p>
-                        <img src="../assets/img/<?= $range_over->img ?>" alt="">
-                        <h3><?= $range_over->marque ?></h3>
+    <center>
+        <h1 style="margin-top: 5%;margin-bottom: -5%;">RANG ROVER</h1>
+    </center>
+    <div class="container">
 
-                        <div class="info1-2">
-                            <div class="info1">
-                                <p>Model : <?= $range_over->model ?></p>
-                                <p>Année : <?= $range_over->annee ?></p>
-                                <p>Carburant : <?= $range_over->essence ?></p>
-                                <p>Vitesse : <?= $range_over->vitesse ?></p>
-                            </div>
+        <?php
+        foreach ($range_overs as $range_over) {
+            if ($range_over->disponibilite == 0) {
+                $btnStatus = 'disabled';
+                $msg = 'Non';
+            } else {
+                $msg = 'Oui';
+                $btnStatus = '';
+            }
+        ?>
+            <div class="product-card">
+                <div class="product-img img-one">
+                    <img style="width: 100%; height: 100%;" src="../assets/img/<?= $range_over->img ?>" alt="">
+                </div>
+                <div class="product-text">
+                    <h3><?= $range_over->marque ?> | <?= $range_over->model ?></h3>
+                    <div class="info">
+                        <p>
+                            <!-- Model : <strong><?= $range_over->model ?></strong><br> -->
+                            Année : <strong><?= $range_over->annee ?></strong><br>
+                            Carburant : <strong><?= $range_over->essence ?></strong><br>
+                            Vitesse : <strong><?= $range_over->vitesse ?></strong><br>
+                        </p>
+                        <p>
+                            Transmition : <strong><?= $range_over->transmition ?></strong><br>
+                            Siège : <strong><?= $range_over->nombreSiege ?></strong><br>
+                            Porte : <strong><?= $range_over->nombrePorte ?></strong><br>
+                            Charge : <strong><?= $range_over->nbMalette ?></strong><br>
 
-                            <div class="info2">
-                                <p>Siège : <?= $range_over->nombreSiege ?></p>
-                                <p>Transmition : <?= $range_over->transmition ?></p>
-                                <p>Porte : <?= $range_over->nombrePorte ?></p>
-                                <p>Charge : <?= $range_over->nbMalette ?></p>
-                            </div>
-                        </div>
-                        <div>
-                            <form action="./location.php" method="POST">
-                                <input type="hidden" name="idVoiture" value="<?= $range_over->id ?>">
-                                <input type="submit" name="btnRent" value="Louer Maitenant">
-                            </form>
-                        </div>
+                        </p>
                     </div>
-                <?php
-                }
-                ?>
+                    <?php
+                    if ($msg === 'Oui') {
+                    ?>
+                        <p> Disponible : <strong style="color: lime;"><?= $msg ?></strong></p>
+                    <?php
+                    } else {
+                    ?>
+                        <p> Disponible : <strong style="color: #f64646;"><?= $msg ?></strong></p>
+                    <?php
+                    } ?>
+                </div>
+                <div class="product-cart">
+                    <form action="./location.php" method="POST">
+                        <input type="hidden" name="idVoiture" value="<?= $range_over->id ?>">
+                        <button type="submit" name="btnRent" <?= $btnStatus ?>>Louer Maitenant</button>
+                    </form>
+                </div>
             </div>
-        </div>
-
-
-        <div class="promotion">
-
-            <!-- <h2>Le Noveau Tesla 2022</h2> -->
-            <img src="../assets/img/Jeep_Wrangler_80th_FirecrackerRed_2p_565x330.png" alt="">
-            <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, dolorum hic. Ex asperiores quam sequi quasi assumenda ad illum magni velit, ea necessitatibus nihil.
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat nulla eos repudiandae repellendus repellat dolorum, molestias tempore atque mollitia veniam sint consequatur cupiditate tempora ex doloribus quo cum pariatur voluptatum.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, nulla, placeat fugit illum aperiam aliquid hic minima reiciendis nisi tempora illo iste alias, corporis expedita. Cupiditate asperiores ut impedit atque?
-            </p>
-        </div>
-
-        <div>
-            <h1 class="marqueVoiture">JEPP</h1>
-            <div class="div-marque">
-                <div class="marque"></div>
-            </div>
-            <div class="allCars">
-                <?php
-                foreach ($Jepps as $Jepp) {
-                ?>
-                    <div class="carInfo">
-                        <p class="prix"><?= $Jepp->prix ?> $</p>
-                        <img src="../assets/img/<?= $Jepp->img ?>" alt="">
-                        <h3><?= $Jepp->marque ?></h3>
-
-                        <div class="info1-2">
-                            <div class="info1">
-                                <p>Model : <?= $Jepp->model ?></p>
-                                <p>Année : <?= $Jepp->annee ?></p>
-                                <p>Carburant : <?= $Jepp->essence ?></p>
-                                <p>Vitesse : <?= $Jepp->vitesse ?></p>
-                            </div>
-
-                            <div class="info2">
-                                <p>Siège : <?= $Jepp->nombreSiege ?></p>
-                                <p>Transmition : <?= $Jepp->transmition ?></p>
-                                <p>Porte : <?= $Jepp->nombrePorte ?></p>
-                                <p>Charge : <?= $Jepp->nbMalette ?></p>
-                            </div>
-                        </div>
-                        <form action="./location.php" method="POST">
-                            <input type="hidden" name="idVoiture" value="<?= $Jepp->id ?>">
-                            <input type="submit" name="btnRent" value="Louer Maitenant">
-                        </form>
-                    </div>
-                <?php
-                }
-                ?>
-            </div>
-        </div>
-
-
-
-        <div>
-            <h1 class="marqueVoiture">INFINITI</h1>
-            <div class="div-marque">
-                <div class="marque"></div>
-            </div>
-            <div class="allCars">
-                <?php
-                foreach ($Infinitis as $Infiniti) {
-                ?>
-                    <div class="carInfo">
-                        <p class="prix"><?= $Infiniti->prix ?> $</p>
-                        <img src="../assets/img/<?= $Infiniti->img ?>" alt="">
-                        <h3><?= $Infiniti->marque ?></h3>
-
-                        <div class="info1-2">
-                            <div class="info1">
-                                <p>Model : <?= $Infiniti->model ?></p>
-                                <p>Année : <?= $Infiniti->annee ?></p>
-                                <p>Carburant : <?= $Infiniti->essence ?></p>
-                                <p>Vitesse : <?= $Infiniti->vitesse ?></p>
-                            </div>
-
-                            <div class="info2">
-                                <p>Siège : <?= $Infiniti->nombreSiege ?></p>
-                                <p>Transmition : <?= $Infiniti->transmition ?></p>
-                                <p>Porte : <?= $Infiniti->nombrePorte ?></p>
-                                <p>Charge : <?= $Infiniti->nbMalette ?></p>
-                            </div>
-                        </div>
-                        <form action="./location.php" method="POST">
-                            <input type="hidden" name="idVoiture" value="<?= $Infiniti->id ?>">
-
-                            <input type="submit" name="btnRent" value="Louer Maitenant">
-                        </form>
-                    </div>
-                <?php
-                }
-                ?>
-            </div>
-        </div>
-
-        <div class="promotion">
-
-            <!-- <h2>Le Noveau Tesla 2022</h2> -->
-            <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, dolorum hic. Ex asperiores quam sequi quasi assumenda ad illum magni velit, ea necessitatibus nihil.
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat nulla eos repudiandae repellendus repellat dolorum, molestias tempore atque mollitia veniam sint consequatur cupiditate tempora ex doloribus quo cum pariatur voluptatum.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, nulla, placeat fugit illum aperiam aliquid hic minima reiciendis nisi tempora illo iste alias, corporis expedita. Cupiditate asperiores ut impedit atque?
-            </p>
-            <img src="../assets/img/FORD-Mustang-Shelby-GT350-5339_26.jpg" alt="">
-        </div>
-
-        <div>
-            <h1 class="marqueVoiture">FORD</h1>
-            <div class="div-marque">
-                <div class="marque"></div>
-            </div>
-            <div class="allCars">
-                <?php
-                foreach ($Fords as $Ford) {
-                ?>
-                    <div class="carInfo">
-                        <p class="prix"><?= $Ford->prix ?> $</p>
-                        <img src="../assets/img/<?= $Ford->img ?>" alt="">
-                        <h3><?= $Ford->marque ?></h3>
-
-                        <div class="info1-2">
-                            <div class="info1">
-                                <p>Model : <?= $Ford->model ?></p>
-                                <p>Année : <?= $Ford->annee ?></p>
-                                <p>Carburant : <?= $Ford->essence ?></p>
-                                <p>Vitesse : <?= $Ford->vitesse ?></p>
-                            </div>
-
-                            <div class="info2">
-                                <p>Siège : <?= $Ford->nombreSiege ?></p>
-                                <p>Transmition : <?= $Ford->transmition ?></p>
-                                <p>Porte : <?= $Ford->nombrePorte ?></p>
-                                <p>Charge : <?= $Ford->nbMalette ?></p>
-                            </div>
-                        </div>
-                        <form action="./location.php" method="POST">
-                            <input type="hidden" name="idVoiture" value="<?= $Ford->id ?>">
-                            <input type="submit" name="btnRent" value="Louer Maitenant">
-                        </form>
-                    </div>
-                <?php
-                }
-                ?>
-            </div>
-        </div>
-
-
-        <div>
-            <h1 class="marqueVoiture">FIAT</h1>
-            <div class="div-marque">
-                <div class="marque"></div>
-            </div>
-            <div class="allCars">
-                <?php
-                foreach ($Fiats as $Fiat) {
-                ?>
-                    <div class="carInfo">
-                        <p class="prix"><?= $Fiat->prix ?> $</p>
-                        <img src="../assets/img/<?= $Fiat->img ?>" alt="">
-                        <h4><?= $Fiat->marque ?></h4>
-
-                        <div class="info1-2">
-                            <div class="info1">
-                                <p>Model : <?= $Fiat->model ?></p>
-                                <p>Année : <?= $Fiat->annee ?></p>
-                                <p>Carburant : <?= $Fiat->essence ?></p>
-                                <p>Vitesse : <?= $Fiat->vitesse ?></p>
-                            </div>
-
-                            <div class="info2">
-                                <p>Siège : <?= $Fiat->nombreSiege ?></p>
-                                <p>Transmition : <?= $Fiat->transmition ?></p>
-                                <p>Porte : <?= $Fiat->nombrePorte ?></p>
-                                <p>Charge : <?= $Fiat->nbMalette ?></p>
-                            </div>
-                        </div>
-                        <form action="./location.php" method="POST">
-                            <input type="hidden" name="idVoiture" value="<?= $Fiat->id ?>">
-                            <input type="submit" name="btnRent" value="Louer Maitenant">
-                        </form>
-                    </div>
-                <?php
-                }
-                ?>
-            </div>
-        </div>
+        <?php
+        }
+        ?>
     </div>
-    <section>
-        <footer class="foot">
-            <h1 id="logo">SMITH<span class="s">'S</span> RENT CAR</h1>
-            <div class="pied-Page">
-                <div class="prod">
-                    <h3>Produits</h3>
-                    <ul>
-                        <li><a href="">Toyota</a></li>
-                        <li><a href="">Fiat</a></li>
-                        <li><a href="">Nissan</a></li>
-                        <li><a href="">Ford</a></li>
-                    </ul>
-                </div>
+    <!-- ---------------------------------------------------------------------------------------------- -->
+    <center>
+        <h1 style="margin-top: 4%;margin-bottom: -4%;">JEPP</h1>
+    </center>
 
-                <div class="prod">
-                    <h3>Service</h3>
-                    <ul>
-                        <li><a href="">Livraison</a></li>
-                        <li><a href="">Chauffeur</a></li>
-                        <li><a href="">Garde du corps</a></li>
-                        <li><a href="">Reparation</a></li>
-                    </ul>
+    <div class="container">
+        <?php
+        foreach ($Jepps as $Jepp) {
+            if ($Jepp->disponibilite == 0) {
+                $btnStatus = 'disabled';
+                $msg = 'Non';
+            } else {
+                $msg = 'Oui';
+                $btnStatus = '';
+            }
+        ?>
+            <div class="product-card">
+                <div class="product-img img-one">
+                    <img style="width: 100%; height: 100%;" src="../assets/img/<?= $Jepp->img ?>" alt="">
                 </div>
+                <div class="product-text">
+                    <h3><?= $Jepp->marque ?> | <?= $Jepp->model ?></h3>
+                    <div class="info">
+                        <p>
+                            <!-- Model : <strong><?= $Jepp->model ?></strong><br> -->
+                            Année : <strong><?= $Jepp->annee ?></strong><br>
+                            Carburant : <strong><?= $Jepp->essence ?></strong><br>
+                            Vitesse : <strong><?= $Jepp->vitesse ?></strong><br>
+                        </p>
+                        <p>
 
-                <div class="prod">
-                    <h3>Information Legales</h3>
-                    <ul>
-                        <li><a href="">Histoire</a></li>
-                        <li><a href="">Personnel</a></li>
-                        <li><a href="">President Directeur</a></li>
-                        <li><a href="">Fondateur</a></li>
-                    </ul>
+                            Siège : <strong><?= $Jepp->nombreSiege ?></strong><br>
+                            Transmition : <strong><?= $Jepp->transmition ?></strong><br>
+                            Porte : <strong><?= $Jepp->nombrePorte ?></strong><br>
+                            Charge : <strong><?= $Jepp->nbMalette ?></strong><br>
+                        </p>
+                    </div>
+
+                    <?php
+                    if ($msg === 'Oui') {
+                    ?>
+                        <p> Disponible : <strong style="color: lime;"><?= $msg ?></strong></p>
+                    <?php
+                    } else {
+                    ?>
+                        <p> Disponible : <strong style="color: #f64646;"><?= $msg ?></strong></p>
+                    <?php
+                    } ?>
+
                 </div>
-
-                <div class="prod">
-                    <h3>Suivez-nous</h3>
-                    <ul class="icon-suivezNous">
-                        <li>
-                            <a href=""><img class="icon-s" id="tw" src="../assets/img/twitter-brands.svg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href=""><img class="icon-s" id="fb" src="../assets/img/facebook-brands.svg" alt=""></a>
-                        </li>
-                        <li>
-                            <a href=""><img class="icon-s" id="yt" src="../assets/img/youtube-brands.svg" alt=""> </a>
-                        </li>
-                        <li>
-                            <a href=""><img class="icon-s" id="it" src="../assets/img/instagram-brands.svg" alt=""></a>
-                        </li>
-                    </ul>
+                <div class="product-cart">
+                    <form action="./location.php" method="POST">
+                        <input type="hidden" name="idVoiture" value="<?= $Jepp->id ?>">
+                        <button type="submit" name="btnRent" <?= $btnStatus ?>>Louer Maitenant</button>
+                    </form>
                 </div>
             </div>
+        <?php
+        }
+        ?>
+    </div>
 
-            <div class="divP">
 
+    <center>
+        <h1 style="margin-top: 4%;margin-bottom: -4%;">INFINITI</h1>
+    </center>
+
+    <div class="container">
+        <?php
+        foreach ($Infinitis  as $Infiniti) {
+            if ($Infiniti->disponibilite == 0) {
+                $btnStatus = 'disabled';
+                $msg = 'Non';
+            } else {
+                $msg = 'Oui';
+                $btnStatus = '';
+            }
+        ?>
+            <div class="product-card">
+                <div class="product-img img-one">
+                    <img style="width: 100%; height: 100%;" src="../assets/img/<?= $Infiniti->img ?>" alt="">
+                </div>
+                <div class="product-text">
+                    <h3><?= $Infiniti->marque ?> | <?= $Infiniti->model ?></h3>
+                    <div class="info">
+                        <p>
+                            <!-- Model : <strong><?= $Infiniti->model ?></strong><br> -->
+                            Année : <strong><?= $Infiniti->annee ?></strong><br>
+                            Carburant : <strong><?= $Infiniti->essence ?></strong><br>
+                            Vitesse : <strong><?= $Infiniti->vitesse ?></strong><br>
+                        </p>
+                        <p>
+
+                            Siège : <strong><?= $Infiniti->nombreSiege ?></strong><br>
+                            Transmition : <strong><?= $Infiniti->transmition ?></strong><br>
+                            Porte : <strong><?= $Infiniti->nombrePorte ?></strong><br>
+                            Charge : <strong><?= $Infiniti->nbMalette ?></strong><br>
+                        </p>
+                    </div>
+
+                    <?php
+                    if ($msg === 'Oui') {
+                    ?>
+                        <p> Disponible : <strong style="color: lime;"><?= $msg ?></strong></p>
+                    <?php
+                    } else {
+                    ?>
+                        <p> Disponible : <strong style="color: #f64646;"><?= $msg ?></strong></p>
+                    <?php
+                    } ?>
+
+                </div>
+                <div class="product-cart">
+                    <form action="./location.php" method="POST">
+                        <input type="hidden" name="idVoiture" value="<?= $Infiniti->id ?>">
+                        <button type="submit" name="btnRent" <?= $btnStatus ?>>Louer Maitenant</button>
+                    </form>
+                </div>
             </div>
-            <p>©Copyright © 2021 SMITH<span class="s">'S</span> RENT CAR - Tous droits reservés</p>
-        </footer>
-    </section>
+        <?php
+        }
+        ?>
+    </div>
 
+    <center>
+        <h1 style="margin-top: 4%;margin-bottom: -4%;">FORD</h1>
+    </center>
+
+    <div class="container">
+        <?php
+        foreach ($Fords  as $Ford) {
+            if ($Ford->disponibilite == 0) {
+                $btnStatus = 'disabled';
+                $msg = 'Non';
+            } else {
+                $msg = 'Oui';
+                $btnStatus = '';
+            }
+        ?>
+            <div class="product-card">
+                <div class="product-img img-one">
+                    <img style="width: 100%; height: 100%;" src="../assets/img/<?= $Ford->img ?>" alt="">
+                </div>
+                <div class="product-text">
+                    <h3><?= $Ford->marque ?> | <?= $Ford->model ?></h3>
+                    <div class="info">
+                        <p>
+                            <!-- Model : <strong><?= $Ford->model ?></strong><br> -->
+                            Année : <strong><?= $Ford->annee ?></strong><br>
+                            Carburant : <strong><?= $Ford->essence ?></strong><br>
+                            Vitesse : <strong><?= $Ford->vitesse ?></strong><br>
+                        </p>
+                        <p>
+
+                            Siège : <strong><?= $Ford->nombreSiege ?></strong><br>
+                            Transmition : <strong><?= $Ford->transmition ?></strong><br>
+                            Porte : <strong><?= $Ford->nombrePorte ?></strong><br>
+                            Charge : <strong><?= $Ford->nbMalette ?></strong><br>
+                        </p>
+                    </div>
+
+                    <?php
+                    if ($msg === 'Oui') {
+                    ?>
+                        <p> Disponible : <strong style="color: lime;"><?= $msg ?></strong></p>
+                    <?php
+                    } else {
+                    ?>
+                        <p> Disponible : <strong style="color: #f64646;"><?= $msg ?></strong></p>
+                    <?php
+                    } ?>
+
+                </div>
+                <div class="product-cart">
+                    <form action="./location.php" method="POST">
+                        <input type="hidden" name="idVoiture" value="<?= $Ford->id ?>">
+                        <button type="submit" name="btnRent" <?= $btnStatus ?>>Louer Maitenant</button>
+                    </form>
+                </div>
+            </div>
+        <?php
+        }
+        ?>
+    </div>
+
+    <center>
+        <h1 style="margin-top: 4%;margin-bottom: -4%;">FIAT</h1>
+    </center>
+
+    <div class="container">
+        <?php
+        foreach ($Fiats  as $Fiat) {
+            if ($Fiat->disponibilite == 0) {
+                $btnStatus = 'disabled';
+                $msg = 'Non';
+            } else {
+                $msg = 'Oui';
+                $btnStatus = '';
+            }
+        ?>
+            <div class="product-card">
+                <div class="product-img img-one">
+                    <img style="width: 100%; height: 100%;" src="../assets/img/<?= $Fiat->img ?>" alt="">
+                </div>
+                <div class="product-text">
+                    <h3><?= $Fiat->marque ?> | <?= $Fiat->model ?></h3>
+                    <div class="info">
+                        <p>
+                            <!-- Model : <strong><?= $Fiat->model ?></strong><br> -->
+                            Année : <strong><?= $Fiat->annee ?></strong><br>
+                            Carburant : <strong><?= $Fiat->essence ?></strong><br>
+                            Vitesse : <strong><?= $Fiat->vitesse ?></strong><br>
+                        </p>
+                        <p>
+
+                            Siège : <strong><?= $Fiat->nombreSiege ?></strong><br>
+                            Transmition : <strong><?= $Fiat->transmition ?></strong><br>
+                            Porte : <strong><?= $Fiat->nombrePorte ?></strong><br>
+                            Charge : <strong><?= $Fiat->nbMalette ?></strong><br>
+                        </p>
+                    </div>
+
+                    <?php
+                    if ($msg === 'Oui') {
+                    ?>
+                        <p> Disponible : <strong style="color: lime;"><?= $msg ?></strong></p>
+                    <?php
+                    } else {
+                    ?>
+                        <p> Disponible : <strong style="color: #f64646;"><?= $msg ?></strong></p>
+                    <?php
+                    } ?>
+
+                </div>
+                <div class="product-cart">
+                    <form action="./location.php" method="POST">
+                        <input type="hidden" name="idVoiture" value="<?= $Fiat->id ?>">
+                        <button type="submit" name="btnRent" <?= $btnStatus ?>>Louer Maitenant</button>
+                    </form>
+                </div>
+            </div>
+        <?php
+        }
+        ?>
+    </div>
 </body>
 
 </html>

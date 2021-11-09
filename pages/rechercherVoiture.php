@@ -11,7 +11,8 @@ include_once('../autoLoad/autoLoader.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/style1.css">
-    <link rel="stylesheet" href="../assets/css/styleContact.css">
+    <link rel="stylesheet" href="../assets/css/styleListeVoiture.css">
+    <!-- <link rel="stylesheet" href="../assets/css/styleContact.css"> -->
     <title>Seach Car</title>
 </head>
 <?php
@@ -25,7 +26,7 @@ if (!isset($_POST['search'])) {
 ?>
 
 <body class="bodySearch">
-<div class="topnav" id="myTopnav">
+    <div class="topnav" id="myTopnav">
         <h1 class="logo">SMITH<span class="s">'S</span> RENT CAR</h1>
         <div class="g">
             <a class="" id="active" href="../index.php"> Accueil </a>
@@ -58,46 +59,66 @@ if (!isset($_POST['search'])) {
         <?php
         } else {
         ?>
-            <h1>Voiture Trouvée du Model <?= $_POST['searchModel'] ?></h1>
+            <!-- <h1>Voiture Trouvée du Model <?= $_POST['searchModel'] ?></h1>
             <div class="div-marque">
                 <div class="marque"></div>
-            </div>
-            <div class="allCars">
+            </div> -->
+
+            <div class="container">
                 <?php
-                foreach ($carFounds->voiture as $carFound) {
+                foreach ($carFounds->voiture as $car) {
+                    if ($car->disponibilite == 0) {
+                        $btnStatus = 'disabled';
+                        $msg = 'Non';
+                    } else {
+                        $msg = 'Oui';
+                        $btnStatus = '';
+                    }
                 ?>
-                    <div class="carInfo">
-                        <p class="prix"><?= $carFound->prix ?> $</p>
-                        <img src="../assets/img/<?= $carFound->img ?>" alt="">
-                        <h3><?= $carFound->marque ?></h3>
-
-                        <div class="info1-2">
-                            <div class="info1">
-                                <p>Model : <?= $carFound->model ?></p>
-                                <p>Année : <?= $carFound->annee ?></p>
-                                <p>Carburant : <?= $carFound->essence ?></p>
-                                <p>Vitesse : <?= $carFound->vitesse ?></p>
-                            </div>
-
-                            <div class="info2">
-                                <p>Siège : <?= $carFound->nombreSiege ?></p>
-                                <p>Transmition : <?= $carFound->transmition ?></p>
-                                <p>Porte : <?= $carFound->nombrePorte ?></p>
-                                <p>Charge : <?= $carFound->nbMalette ?></p>
-                            </div>
+                    <div class="product-card">
+                        <div class="product-img img-one">
+                            <img style="width: 100%; height: 100%;" src="../assets/img/<?= $car->img ?>" alt="">
                         </div>
+                        <div class="product-text">
+                            <h3><?= $car->marque ?> | <?= $car->model ?></h3>
+                            <div class="info">
+                                <p>
+                                    <!-- Model : <strong><?= $car->model ?></strong><br> -->
+                                    Année : <strong><?= $car->annee ?></strong><br>
+                                    Carburant : <strong><?= $car->essence ?></strong><br>
+                                    Vitesse : <strong><?= $car->vitesse ?></strong><br>
+                                </p>
+                                <p>
+                                    Transmition : <strong><?= $car->transmition ?></strong><br>
+                                    Siège : <strong><?= $car->nombreSiege ?></strong><br>
+                                    Porte : <strong><?= $car->nombrePorte ?></strong><br>
+                                    Charge : <strong><?= $car->nbMalette ?></strong><br>
 
-                        <form action="./location.php" method="POST">
-                            <input type="hidden" name="idVoiture" value="<?= $carFound->id ?>">
-                            <input type="submit" name="btnRent" value="Louer Maitenant">
-                        </form>
+                                </p>
+                            </div>
+                            <?php
+                            if ($msg === 'Oui') {
+                            ?>
+                                <p> Disponible : <strong style="color: lime;"><?= $msg ?></strong></p>
+                            <?php
+                            } else {
+                            ?>
+                                <p> Disponible : <strong style="color: #f64646;"><?= $msg ?></strong></p>
+                            <?php
+                            } ?>
+                        </div>
+                        <div class="product-cart">
+                            <form action="./location.php" method="POST">
+                                <input type="hidden" name="idVoiture" value="<?= $car->id ?>">
+                                <button type="submit" name="btnRent" <?= $btnStatus ?>>Louer Maitenant</button>
+                            </form>
+                        </div>
                     </div>
             <?php
                 }
             }
             ?>
             </div>
-    </div>
 </body>
 
 </html>
