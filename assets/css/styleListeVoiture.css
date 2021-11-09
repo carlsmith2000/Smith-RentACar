@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 html {
     box-sizing: border-box;
-    font: 62.5% "Noto Sans JP", sans-serif;
+    /* font: 62.5% "Noto Sans JP", sans-serif; */
 }
 
 *,
@@ -10,17 +10,23 @@ html {
     box-sizing: inherit;
 }
 
-body {
+.list {
+    background-color: rgb(235, 235, 235);
+}
+
+
+/* body {
     background: #2f3640;
     font-size: 1.6em;
     margin: 0;
     /* min-height: 100vh; */
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-}
 
-h3,
+
+/* display: flex;
+    align-items: center;
+    justify-content: center; }*/
+
+*/ h3,
 p {
     margin: 0;
     padding-bottom: .5em;

@@ -87,7 +87,7 @@ $maxId = $vueClient->maxIdClient()->maxId;
                 <div class="txt_input">
                     <div>
                         <label for="adresse">Votre Adresse</label>
-                        <input class="input" type="text" name="adresse" placeholder="Entree Votre Adresse" required>
+                        <input class="input" type="text" name="adresse" placeholder="Entrer Votre Adresse" required>
                     </div>
                 </div>
 

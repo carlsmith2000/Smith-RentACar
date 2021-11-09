@@ -11,6 +11,8 @@ include_once('../autoLoad/autoLoader.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/style1.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="../assets/Js/responsive-nav.js"></script>
     <title>Smith Rent a Car | Location</title>
 </head>
 
@@ -43,22 +45,25 @@ include_once('../autoLoad/autoLoader.php');
             }
         }
         ?>
-        <div class="topnav" id="myTopnav">
-            <h1 class="logo">SMITH<span class="s">'S</span> RENT CAR</h1>
-            <div>
-                <a class="" id="active" href="../index.php"> Accueil </a>
-                <a class="linkOfM" href="./listeDesVoitures.php">Liste Des Voiture</a>
-                <a class="linkOfM" href="./locationVoiture.php">Location</a>
-                <a class="linkOfM" href="./chat.php">Chat</a>
-                <a class="linkOfM" href="">Loisirs</a>
-                <a class="linkOfM" href="./contact.php">Contact</a>
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                    <img class="fa fa-bars" src="./assets/img/menu_16x16.png" alt="">
-                </a>
-            </div>
+        <header>
+        <a href="../index.php" class="logo" data-scroll>SMITH<span class="s">'S</span> RENT CAR</a>
+        <nav class="nav-collapse">
+            <ul>
+                <li class="menu-item active"><a href="../index.php"> Accueil</a></li>
+                <!-- <li class="menu-item"><a href="#services" data-scroll>services</a></li> -->
+                <li class="menu-item"><a href="./listeDesVoitures.php">Liste Des Voiture</a></li>
+                <li class="menu-item"><a href="./locationVoiture.php">Location</a></li>
+                <li class="menu-item"><a href="./chat.php">Chat</a></li>
+                <li class="menu-item"><a href="./rechercherVoiture.php">Rechercher</a></li>
+                <li class="menu-item"><a href="./loisir.php">Loisirs</a></li>
+                <li class="menu-item"><a href="./contact.php">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        </div>
-        <script type="text/javascript" src="./assets/Js/javaScript.js"></script>
+    <script src="../assets/Js/fastclick.js"></script>
+    <script src="../assets/Js/scroll.js"></script>
+    <script src="../assets/Js/fixed-responsive-nav.js"></script>
         <div class="location-div">
             <form action="ficheLocation.php" method="POST">
                 <h3>INFORMATION NECESSAIRE</h3>

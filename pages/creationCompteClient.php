@@ -6,7 +6,7 @@ $vueClient = new VueClients();
 $maxId = $vueClient->maxIdClient()->maxId;
 
 if (isset($_POST['valider'])) {
-    $nomComplet = $_POST['nom'];
+    $nomComplet = $_POST['name'] . ' ' .  $_POST['lastName'];
     $age = $_POST['age'];
     $cin = $_POST['cin'];
     $dateExpirationPermis = $_POST['expPermis'];
@@ -25,6 +25,12 @@ if (isset($_POST['valider'])) {
         $adresse,
         $codeConnexion
     );
+?>
+    <script>
+        var num = "<?php echo $codeConnexion; ?>"
+        alert(num+" Est votre numero de Compte Client, à ne pas Oublier SVP !");
+    </script>
+<?php
 }
 ?>
 <!DOCTYPE html>
@@ -34,6 +40,8 @@ if (isset($_POST['valider'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/styleRegister.css">
+    <link rel="stylesheet" href="../assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <title>Smith Rent | Compte Client</title>
 </head>
 
@@ -45,51 +53,50 @@ if (isset($_POST['valider'])) {
             </div>
             <div class="row clearfix">
                 <div class="">
-                    <form>
+                    <form action="../pages/creationCompteClient.php" method="POST">
+
                         <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                             <input type="mail" name="mail" placeholder="Entrer votre l'email" required>
+                            <input type="email" name="mail" placeholder="Entrer votre l'email" required>
                         </div>
+
                         <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                            <input type="password" name="password" placeholder="Password" required />
+                            <input type="text" name="telephone" placeholder="Entre Le no telephone du Client" required>
                         </div>
+
                         <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                            <input type="password" name="password" placeholder="Re-type Password" required />
+                            <input type="text" name="adresse" placeholder="Entrer Votre Adresse" required>
                         </div>
+
                         <div class="row clearfix">
+
                             <div class="col_half">
                                 <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
                                     <input type="text" name="name" placeholder="First Name" />
                                 </div>
                             </div>
+
                             <div class="col_half">
                                 <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                                    <input type="text" name="name" placeholder="Last Name" required />
+                                    <input type="text" name="lastName" placeholder="Last Name" required />
                                 </div>
                             </div>
+
                         </div>
-                        <div class="input_field radio_option">
-                            <input type="radio" name="radiogroup1" id="rd1">
-                            <label for="rd1">Male</label>
-                            <input type="radio" name="radiogroup1" id="rd2">
-                            <label for="rd2">Female</label>
+
+                        <div class="input_field">
+                            <input type="number" name="age" placeholder="Entrer Votre Age" min=18 max=75 required>
                         </div>
-                        <div class="input_field select_option">
-                            <select>
-                                <option>Select a country</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                            </select>
-                            <div class="select_arrow"></div>
+
+                        <div class="input_field">
+                            <input type="number" name="cin" placeholder="Entree Votre CIN" required>
                         </div>
-                        <!-- <div class="input_field checkbox_option">
-                            <input type="checkbox" id="cb1">
-                            <label for="cb1">I agree with terms and conditions</label>
+
+                        <div class="input_field">
+                            <input type="date" name="expPermis" placeholder="date exp Permis" required>
                         </div>
-                        <div class="input_field checkbox_option">
-                            <input type="checkbox" id="cb2">
-                            <label for="cb2">I want to receive the newsletter</label>
-                        </div> -->
-                        <input class="button" type="submit" value="Register" />
+
+                        <input class="button" type="submit" value="Valider" name="valider" />
+                        <input class="button" type="reset" value="Effacer" name="effacer" />
                     </form>
                 </div>
             </div>
